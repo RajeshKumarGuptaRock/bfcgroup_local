@@ -3659,10 +3659,12 @@ public function table()
         $res1 = $this->db->get('tblleads')->row();
         $mainassigned = $res1->assigned;
         if($remark != ''){
-           $calling_date = date("Y/m/d");
+           $calling_date = date("d/m/Y");
+           $lead_calling_date = date("Y-m-d");
            $created_date = date("Y-m-d h:i:s"); 
         }else{
-           $calling_date = date("Y/m/d"); 
+           $calling_date = date("d/m/Y");
+           $lead_calling_date = date("Y-m-d");
            $created_date = date("Y-m-d h:i:s"); 
            
 
@@ -3691,12 +3693,12 @@ public function table()
         if($remark != null ) {
    
 
-        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name,  'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source,  'calling_objective' => $calling_objective,  'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling, 'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date ,'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1);  
+        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name,  'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source,  'calling_objective' => $calling_objective,  'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling, 'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date ,'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);  
         }
         else
         {
           
-        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name, 'status' => $status, 'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source, 'calling_objective' => $calling_objective, 'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling,  'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date, 'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1);
+        $data = array('lead_bookformat'=>$book_format,'lead_callingdate'=>$calling_date,'lead_publishedearlier'=>$PublishedEarlier,'lead_booktitle'=>$booktitle,'otherphonenumber'=>$otherphonenumber,'lead_author_name' => $name,'lead_author_name' => $name, 'status' => $status, 'phonenumber' => $phonenumber, 'email' => $email, 'designation' => $designation, 'company' => $company, 'address' => $address, 'data_source' => $data_source, 'calling_objective' => $calling_objective, 'meetingtimefrom' => $meetingtimefrom, 'meetingtimeto' => $meetingtimeto, 'next_calling' => $next_calling,  'status' => $status, 'lastcontact' => $date, 'assigned' => $assigned,'lead_category_id' => $categorisation,'lead_author_msstatus'=>$manuscriptStatus,'lead_author_mslanguage'=>$bookLanguage, 'ImEx_NextcallingDate' => $next_calling, 'ImEx_callingDate' => $calling_date, 'ImEx_CreatedAt' => $calling_date, 'lead_acquired_date'=> $date,'no_of_books'=>$no_of_books,'total_no_of_books'=>$no_of_books1,'lead_calling_date'=>$lead_calling_date);
         }
         
        // print_r($data);exit;
@@ -9175,7 +9177,7 @@ $servicess = implode(", ",  $filteredArray);
         $res1 = $this->db->get('tblleads')->row();
         $mainassigned = $res1->assigned;
         if($remark != ''){
-           $calling_date = date("Y/m/d"); 
+           $calling_date = date("d/m/Y"); 
         }else{
            $calling_date = ''; 
         }
@@ -11524,7 +11526,7 @@ echo $myJSON;
         $config = array();
         $config['base_url'] =  base_url() .'admin/leads/transferred_leads/';
         $config['total_rows'] =$allcount;
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000;
         $config['full_tag_open'] = "<ul class='pagination'>";
         $config['full_tag_close'] = '</ul>';
         $config['num_tag_open'] = '<li>';

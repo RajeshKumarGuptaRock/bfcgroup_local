@@ -2488,3 +2488,739 @@ INFO - 2021-12-22 15:41:25 --> File loaded: D:\xampp56\htdocs\BFCGroup\applicati
 INFO - 2021-12-22 15:41:25 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
 INFO - 2021-12-22 15:41:25 --> Final output sent to browser
 DEBUG - 2021-12-22 15:41:25 --> Total execution time: 0.3946
+INFO - 2021-12-22 16:08:37 --> Config Class Initialized
+INFO - 2021-12-22 16:08:37 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:08:37 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:08:37 --> URI Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:08:37 --> Router Class Initialized
+INFO - 2021-12-22 16:08:37 --> Output Class Initialized
+INFO - 2021-12-22 16:08:37 --> Security Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:08:37 --> CSRF cookie sent
+INFO - 2021-12-22 16:08:37 --> Input Class Initialized
+INFO - 2021-12-22 16:08:37 --> Language Class Initialized
+INFO - 2021-12-22 16:08:37 --> Loader Class Initialized
+INFO - 2021-12-22 16:08:37 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:08:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:08:37 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:08:37 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:08:37 --> User Agent Class Initialized
+INFO - 2021-12-22 16:08:37 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:08:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:08:37 --> Encryption Class Initialized
+INFO - 2021-12-22 16:08:37 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:08:37 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:08:37 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:08:37 --> CRM_Model class loaded
+INFO - 2021-12-22 16:08:37 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:08:37 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:08:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:08:37 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:08:37 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:08:37 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:08:37 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:08:37 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:08:37 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:08:37 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:08:37 --> Final output sent to browser
+DEBUG - 2021-12-22 16:08:37 --> Total execution time: 0.1745
+INFO - 2021-12-22 16:08:37 --> Config Class Initialized
+INFO - 2021-12-22 16:08:37 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:08:37 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:08:37 --> URI Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:08:37 --> Router Class Initialized
+INFO - 2021-12-22 16:08:37 --> Output Class Initialized
+INFO - 2021-12-22 16:08:37 --> Security Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:08:37 --> CSRF cookie sent
+INFO - 2021-12-22 16:08:37 --> Input Class Initialized
+INFO - 2021-12-22 16:08:37 --> Language Class Initialized
+INFO - 2021-12-22 16:08:37 --> Loader Class Initialized
+INFO - 2021-12-22 16:08:37 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:08:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:08:37 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:08:37 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:08:37 --> User Agent Class Initialized
+INFO - 2021-12-22 16:08:37 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:08:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:08:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:08:37 --> Encryption Class Initialized
+INFO - 2021-12-22 16:08:37 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:08:37 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:08:37 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:08:37 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:08:37 --> CRM_Model class loaded
+INFO - 2021-12-22 16:08:37 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:08:37 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:08:38 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:08:38 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:08:38 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:08:38 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:08:38 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:08:38 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:08:38 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:08:38 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:08:38 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:08:38 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:08:38 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:08:38 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:08:38 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:08:38 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:08:38 --> Final output sent to browser
+DEBUG - 2021-12-22 16:08:38 --> Total execution time: 0.1894
+INFO - 2021-12-22 16:09:44 --> Config Class Initialized
+INFO - 2021-12-22 16:09:44 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:09:44 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:09:44 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:09:44 --> URI Class Initialized
+DEBUG - 2021-12-22 16:09:44 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:09:44 --> Router Class Initialized
+INFO - 2021-12-22 16:09:44 --> Output Class Initialized
+INFO - 2021-12-22 16:09:44 --> Security Class Initialized
+DEBUG - 2021-12-22 16:09:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:09:44 --> CSRF cookie sent
+INFO - 2021-12-22 16:09:44 --> Input Class Initialized
+INFO - 2021-12-22 16:09:44 --> Language Class Initialized
+INFO - 2021-12-22 16:09:44 --> Loader Class Initialized
+INFO - 2021-12-22 16:09:44 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:09:44 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:09:44 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:09:44 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:09:44 --> User Agent Class Initialized
+INFO - 2021-12-22 16:09:44 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:09:44 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:09:44 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:09:44 --> Encryption Class Initialized
+INFO - 2021-12-22 16:09:44 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:09:44 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:09:44 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:09:44 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:09:44 --> CRM_Model class loaded
+INFO - 2021-12-22 16:09:44 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:09:44 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:09:44 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:09:44 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:09:44 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:09:44 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:09:44 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:09:44 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:09:44 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:09:44 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:09:44 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:09:44 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:09:44 --> Final output sent to browser
+DEBUG - 2021-12-22 16:09:44 --> Total execution time: 0.1724
+INFO - 2021-12-22 16:10:02 --> Config Class Initialized
+INFO - 2021-12-22 16:10:02 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:10:02 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:10:02 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:10:02 --> URI Class Initialized
+DEBUG - 2021-12-22 16:10:02 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:10:02 --> Router Class Initialized
+INFO - 2021-12-22 16:10:02 --> Output Class Initialized
+INFO - 2021-12-22 16:10:02 --> Security Class Initialized
+DEBUG - 2021-12-22 16:10:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:10:02 --> CSRF cookie sent
+INFO - 2021-12-22 16:10:02 --> Input Class Initialized
+INFO - 2021-12-22 16:10:02 --> Language Class Initialized
+INFO - 2021-12-22 16:10:02 --> Loader Class Initialized
+INFO - 2021-12-22 16:10:02 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:10:02 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:10:02 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:10:02 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:10:02 --> User Agent Class Initialized
+INFO - 2021-12-22 16:10:02 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:10:02 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:10:02 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:10:02 --> Encryption Class Initialized
+INFO - 2021-12-22 16:10:02 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:10:02 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:10:02 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:10:02 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:10:02 --> CRM_Model class loaded
+INFO - 2021-12-22 16:10:02 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:10:02 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:10:02 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:10:02 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:10:02 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:10:02 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:10:02 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:10:02 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:10:02 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:10:02 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:10:02 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:10:02 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:10:02 --> Final output sent to browser
+DEBUG - 2021-12-22 16:10:02 --> Total execution time: 0.1652
+INFO - 2021-12-22 16:21:25 --> Config Class Initialized
+INFO - 2021-12-22 16:21:25 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:21:25 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:21:25 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:21:25 --> URI Class Initialized
+DEBUG - 2021-12-22 16:21:25 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:21:25 --> Router Class Initialized
+INFO - 2021-12-22 16:21:25 --> Output Class Initialized
+INFO - 2021-12-22 16:21:25 --> Security Class Initialized
+DEBUG - 2021-12-22 16:21:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:21:25 --> CSRF cookie sent
+INFO - 2021-12-22 16:21:25 --> Input Class Initialized
+INFO - 2021-12-22 16:21:25 --> Language Class Initialized
+INFO - 2021-12-22 16:21:25 --> Loader Class Initialized
+INFO - 2021-12-22 16:21:25 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:21:25 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:25 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:21:25 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:21:25 --> User Agent Class Initialized
+INFO - 2021-12-22 16:21:25 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:21:25 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:21:25 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:21:25 --> Encryption Class Initialized
+INFO - 2021-12-22 16:21:25 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:21:25 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:21:25 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:21:25 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:21:25 --> CRM_Model class loaded
+INFO - 2021-12-22 16:21:25 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:21:25 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:21:25 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:21:25 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:21:25 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:25 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:21:25 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:21:25 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:21:25 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:21:25 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:21:25 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:21:25 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:21:25 --> Final output sent to browser
+DEBUG - 2021-12-22 16:21:25 --> Total execution time: 0.1704
+INFO - 2021-12-22 16:21:28 --> Config Class Initialized
+INFO - 2021-12-22 16:21:28 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:21:28 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:21:28 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:21:28 --> URI Class Initialized
+DEBUG - 2021-12-22 16:21:28 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:21:28 --> Router Class Initialized
+INFO - 2021-12-22 16:21:28 --> Output Class Initialized
+INFO - 2021-12-22 16:21:28 --> Security Class Initialized
+DEBUG - 2021-12-22 16:21:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:21:28 --> CSRF cookie sent
+INFO - 2021-12-22 16:21:28 --> Input Class Initialized
+INFO - 2021-12-22 16:21:28 --> Language Class Initialized
+INFO - 2021-12-22 16:21:28 --> Loader Class Initialized
+INFO - 2021-12-22 16:21:28 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:21:28 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:28 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:21:28 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:21:28 --> User Agent Class Initialized
+INFO - 2021-12-22 16:21:28 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:21:28 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:21:28 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:21:28 --> Encryption Class Initialized
+INFO - 2021-12-22 16:21:28 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:21:28 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:21:28 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:21:28 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:21:28 --> CRM_Model class loaded
+INFO - 2021-12-22 16:21:28 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:21:28 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:21:28 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:21:28 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:21:28 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:28 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:21:28 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:21:28 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:21:28 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:21:28 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:21:28 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:21:28 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:21:28 --> Final output sent to browser
+DEBUG - 2021-12-22 16:21:28 --> Total execution time: 0.1744
+INFO - 2021-12-22 16:21:36 --> Config Class Initialized
+INFO - 2021-12-22 16:21:36 --> Hooks Class Initialized
+DEBUG - 2021-12-22 16:21:36 --> UTF-8 Support Enabled
+INFO - 2021-12-22 16:21:36 --> Utf8 Class Initialized
+INFO - 2021-12-22 16:21:36 --> URI Class Initialized
+DEBUG - 2021-12-22 16:21:36 --> No URI present. Default controller set.
+INFO - 2021-12-22 16:21:36 --> Router Class Initialized
+INFO - 2021-12-22 16:21:36 --> Output Class Initialized
+INFO - 2021-12-22 16:21:36 --> Security Class Initialized
+DEBUG - 2021-12-22 16:21:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 16:21:36 --> CSRF cookie sent
+INFO - 2021-12-22 16:21:36 --> Input Class Initialized
+INFO - 2021-12-22 16:21:36 --> Language Class Initialized
+INFO - 2021-12-22 16:21:36 --> Loader Class Initialized
+INFO - 2021-12-22 16:21:36 --> Helper loaded: files_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: url_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: file_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: form_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: general_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: misc_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: func_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: projects_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: fields_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: leads_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: relation_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: tags_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: clients_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: database_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: upload_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: sales_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: themes_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: sms_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 16:21:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:36 --> Database Driver Class Initialized
+INFO - 2021-12-22 16:21:36 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 16:21:36 --> User Agent Class Initialized
+INFO - 2021-12-22 16:21:36 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 16:21:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 16:21:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 16:21:36 --> Encryption Class Initialized
+INFO - 2021-12-22 16:21:36 --> Helper loaded: email_helper
+INFO - 2021-12-22 16:21:36 --> Helper loaded: html_helper
+INFO - 2021-12-22 16:21:36 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 16:21:36 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 16:21:36 --> CRM_Model class loaded
+INFO - 2021-12-22 16:21:36 --> Model "Misc_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Roles_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Statement_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Clients_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Projects_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Staff_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 16:21:36 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 16:21:36 --> Controller Class Initialized
+DEBUG - 2021-12-22 16:21:36 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 16:21:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 16:21:36 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 16:21:36 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 16:21:36 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 16:21:36 --> Form Validation Class Initialized
+INFO - 2021-12-22 16:21:36 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 16:21:36 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 16:21:36 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 16:21:36 --> Final output sent to browser
+DEBUG - 2021-12-22 16:21:36 --> Total execution time: 0.1692
+INFO - 2021-12-22 18:16:48 --> Config Class Initialized
+INFO - 2021-12-22 18:16:48 --> Hooks Class Initialized
+DEBUG - 2021-12-22 18:16:48 --> UTF-8 Support Enabled
+INFO - 2021-12-22 18:16:48 --> Utf8 Class Initialized
+INFO - 2021-12-22 18:16:48 --> URI Class Initialized
+DEBUG - 2021-12-22 18:16:48 --> No URI present. Default controller set.
+INFO - 2021-12-22 18:16:48 --> Router Class Initialized
+INFO - 2021-12-22 18:16:48 --> Output Class Initialized
+INFO - 2021-12-22 18:16:48 --> Security Class Initialized
+DEBUG - 2021-12-22 18:16:48 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-12-22 18:16:48 --> CSRF cookie sent
+INFO - 2021-12-22 18:16:48 --> Input Class Initialized
+INFO - 2021-12-22 18:16:48 --> Language Class Initialized
+INFO - 2021-12-22 18:16:48 --> Loader Class Initialized
+INFO - 2021-12-22 18:16:48 --> Helper loaded: files_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: url_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: file_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: form_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: action_hooks_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: user_meta_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: emails_tracking_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: general_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: misc_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: func_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: gdpr_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: datatables_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: custom_fields_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: defaults_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: merge_fields_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: app_html_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: email_templates_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: invoices_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: subscriptions_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: expenses_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: estimates_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: contracts_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: credit_notes_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: proposals_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: projects_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: tasks_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: fields_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: leads_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: tickets_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: relation_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: tags_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: pdf_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: clients_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: database_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: upload_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: sales_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: themes_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: theme_style_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: widgets_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: sms_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: deprecated_helper
+INFO - 2021-12-22 18:16:48 --> Helper loaded: system_messages_helper
+INFO - 2021-12-22 18:16:48 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 18:16:48 --> Database Driver Class Initialized
+INFO - 2021-12-22 18:16:48 --> Session: Class initialized using 'database' driver.
+INFO - 2021-12-22 18:16:48 --> User Agent Class Initialized
+INFO - 2021-12-22 18:16:48 --> Image Lib Class Initialized
+DEBUG - 2021-12-22 18:16:48 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2021-12-22 18:16:48 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2021-12-22 18:16:48 --> Encryption Class Initialized
+INFO - 2021-12-22 18:16:50 --> Helper loaded: email_helper
+INFO - 2021-12-22 18:16:50 --> Helper loaded: html_helper
+INFO - 2021-12-22 18:16:50 --> Email Class Initialized (Engine: phpmailer)
+DEBUG - 2021-12-22 18:16:50 --> App class already loaded. Second attempt ignored.
+INFO - 2021-12-22 18:16:50 --> CRM_Model class loaded
+INFO - 2021-12-22 18:16:50 --> Model "Misc_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Roles_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Client_vault_entries_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Client_groups_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Statement_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Clients_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Projects_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Staff_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Tasks_model" initialized
+INFO - 2021-12-22 18:16:50 --> Model "Dashboard_model" initialized
+INFO - 2021-12-22 18:16:50 --> Controller Class Initialized
+DEBUG - 2021-12-22 18:16:50 --> Config file loaded: D:\xampp56\htdocs\BFCGroup\application\config/migration.php
+INFO - 2021-12-22 18:16:50 --> Language file loaded: language/english/english_lang.php
+INFO - 2021-12-22 18:16:50 --> Model "User_Autologin" initialized
+INFO - 2021-12-22 18:16:50 --> Helper loaded: cookie_helper
+INFO - 2021-12-22 18:16:50 --> Model "Authentication_model" initialized
+INFO - 2021-12-22 18:16:50 --> Form Validation Class Initialized
+INFO - 2021-12-22 18:16:50 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/head.php
+INFO - 2021-12-22 18:16:50 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/includes/alerts.php
+INFO - 2021-12-22 18:16:50 --> File loaded: D:\xampp56\htdocs\BFCGroup\application\views\authentication/login_admin.php
+INFO - 2021-12-22 18:16:50 --> Final output sent to browser
+DEBUG - 2021-12-22 18:16:50 --> Total execution time: 2.1806

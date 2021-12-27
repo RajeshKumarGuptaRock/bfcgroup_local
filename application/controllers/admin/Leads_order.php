@@ -6028,6 +6028,7 @@ public function exportCategoryWise(){
         {
             $this->db->where('tblleads.lead_created_date BETWEEN "'.$start_date1.' 00:00:00.000" and "'. $end_date1.' 23:59:59.997"');
         }
+        $this->db->where('previous_assigned',0);
            $this->db->order_by("lead_created_date","asc");
            $result = $this->db->get('tblleads')->result();
            $datas =array();
@@ -6378,7 +6379,7 @@ public function clear_filter(){
         $url = $_SERVER['HTTP_REFERER'];
         
       //   echo $url;die;
-      //   print_r($cat.'cat  '.$start_date.'start  '.$end_date.'end_date  ');exit();
+         //print_r($cat.'cat  '.$start_date.'start  '.$end_date.'end_date  ');exit();
 
           if ($cat == 'no_cat' ) {
               if(($cat == 'no_cat') && ($start_date == 'no_date') && ($end_date == 'no_date')){
@@ -6433,10 +6434,22 @@ public function clear_filter(){
           // print_r($cat) ;die;
           $this->db->where_in('tblleads.lead_category_id', $task_type);
       }
-      if (isset($end_date1) && $end_date1 != null  ) 
+      $start_date1 = (isset($start_date1) && trim($start_date1)!='')?date("Y-m-d",strtotime(trim($start_date1))):'';//$_POST['start_date'];die;
+        $end_date1 = (isset($end_date1) && trim($end_date1)!='')?date("Y-m-d",strtotime(trim($end_date1))):'';//$_POST['end_date'];
+     
+        if (isset($start_date1) && $start_date1 != '' && isset($end_date1) && $end_date1 != ''  ) 
+        {
+            $this->db->where('tblleads.lead_calling_date BETWEEN "'.$start_date1.'" and "'. $end_date1.'"');
+            //$this->db->where('tblleads.lead_created_date BETWEEN "'.$start_date1.' 00:00:00.000" and "'. $end_date1.' 23:59:59.997"');
+            //$this->db->where('lead_created_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
+            //$this->db->where('lead_callingdate BETWEEN "'.$start_date.'" and "'. $end_date.'"');
+            //$this->db->where('next_calling BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
+        }
+
+      /*if (isset($end_date1) && $end_date1 != null  ) 
       {
           $this->db->where('tblleads.lead_created_date BETWEEN "'.$start_date1.' 00:00:00.000" and "'. $end_date1.' 23:59:59.997"');
-      }
+      }*/
          $this->db->order_by("lead_created_date","asc");
          $result = $this->db->get('tblleads')->result();
         //  echo "<pre>";

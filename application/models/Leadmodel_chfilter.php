@@ -5868,6 +5868,7 @@ $staff_id = $_SESSION['staff_user_id'];
 
         }
 
+        $this->db->where('previous_assigned',0);
         $query = $this->db->order_by("lead_created_date","asc");
 
         $query = $this->db->get('tblleads');
@@ -5939,7 +5940,7 @@ $staff_id = $_SESSION['staff_user_id'];
             // $this->db->where('lead_created_date <=',$end_date);
 
         }
-
+        $this->db->where('previous_assigned',0);
         $query = $this->db->get();
         $result = $query->result_array();
         return $result[0]['allcount'];

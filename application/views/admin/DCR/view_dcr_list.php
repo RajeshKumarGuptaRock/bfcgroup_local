@@ -6,11 +6,11 @@
             <div class="col-md-12">
                 <div class="panel_s">
                     <div class="panel-body">
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="dropdown bootstrap-select show-tick">
                                 <input type="button" class = "btn btn-primary" onclick="tableToExcel('testTable', 'W3C Example Table')" value="Export">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
 
                         <?php $converted_by = $this->session->userdata('staff_user_id'); 
@@ -34,11 +34,9 @@
                             
                         
                                 foreach ($staff_list as $stf) {
-                                    if ($id == $stf['staffid']) {
-                            
-                                    }else{ ?>
+                                    ?>
                                     <option value="<?= $stf['staffid']; ?>"><?= $stf['firstname']; ?> <?= $stf['lastname']; ?></option>
-                                <?php } }
+                                <?php  }
                             } ?>
                         </select>
                                 
@@ -105,11 +103,11 @@
                                 
                                 <tbody  id="tblResult">
                                    <?php
-								   $data_c = array(39,5,16,38,30,32,41);
+								   $data_c = array(39,5,38,16,30,32,41);
                                    $data_count = array(39,5,38,16,30,32,41,40);
                                    $i=0;
-                                   $sdate = date('Y-m-01 00:00:00');
-                                   $edate = date('Y-m-31 23:59:59');
+                                   $sdate = date('Y-m-01');
+                                   $edate = date('Y-m-31');
                                 //    echo $sdate;
                                 //    echo $edate;
 									 if (is_admin()){
@@ -120,13 +118,13 @@
                                         <tr>
                                             <td class="bold"><?= $value->firstname.' '.$value->lastname?></td>
                                             <?php foreach ($data_count as $key => $data_c_a) { 
-                                                $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array(); 
+                                                $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array(); 
                                             $all[$i] += $getData_all[0]['cnt'];
                                        }?>
                                             <td class="bold"><?=$all[$i];?></td>
                                             <?php $j=0; foreach ($data_c as $key => $data_c_a) {
                                                    if ($data_c_a  == 32) {
-                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array();  
+                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array();  
                                                 $getData_np_all[$i] += $getData_np[0]['cnt'];
                                                 $full_count = $all[$i] -  $getData_np_all[$i];
                                                 }
@@ -134,7 +132,7 @@
                                              <td class="bold"><?=$full_count;?></td>
                                             <?php foreach ($data_c as $key => $data_c_a) {
                                                
-                                            $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array(); ?>
+                                            $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value->staffid,'lead_category_id'=>$data_c_a))->result_array(); ?>
                                            
                                            <td class="bold"><?php echo($getData[0]['cnt'])?></td>
                                         <?php } ?>
@@ -146,22 +144,19 @@
 									 }else if(count($staff_list) > 1){
                                        $id = $this->session->userdata('staff_user_id');
                                         foreach ($staff_list as $value) {
-                                  if ($id == $value['staffid']) {
-                                     
-                                  }else{
 
                                   
                                             ?>
                                         <tr>
                                             <td class="bold"><?= $value['firstname'].' '.$value['lastname']?></td>
                                             <?php foreach ($data_count as $key => $data_c_a) { 
-                                                $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array(); 
+                                                $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array(); 
                                             $all[$i] += $getData_all[0]['cnt'];
                                              }?>
                                             <td class="bold"><?=$all[$i];?></td>
                                             <?php foreach ($data_c as $key => $data_c_a) {
                                                    if ($data_c_a  == 32) {
-                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array();  
+                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array();  
                                               
                                                     $getData_np_all[$i] += $getData_np[0]['cnt'];
                                                 $full_count = $all[$i] -  $getData_np_all[$i];
@@ -169,25 +164,25 @@
                                            } ?>
                                              <td class="bold"><?=$full_count;?></td>
                                             <?php foreach ($data_c as $key => $data_c_a) {
-                                             $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array(); ?>
+                                             $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$value['staffid'],'lead_category_id'=>$data_c_a))->result_array(); ?>
                                             <td class="bold"><?php echo($getData[0]['cnt'])?></td>
                                           <?php } ?>
                                             
                                         
                                         </tr>
-                                        <?php $i++;}	}
+                                        <?php $i++;	}
                                      }
                                      else{ //print_r($staff_list); ?>
                                         <tr>
 										<!-- <td class="bold"><?= $staff_list[0]->firstname.' '.$staff_list[0]->lastname?></td> -->
                                         <?php foreach ($data_count as $key => $data_c_a) { 
-                                            $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array(); 
+                                            $getData_all =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array(); 
                                         $all[$i] += $getData_all[0]['cnt'];
                                          }?>
 										<td class="bold"><?=$all[$i];?></td>
                                         <?php foreach ($data_c as $key => $data_c_a) {
                                                    if ($data_c_a  == 32) {
-                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array();  
+                                                    $getData_np =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array();  
                                               
                                                     $getData_np_all[$i] += $getData_np[0]['cnt'];
                                                 $full_count = $all[$i] -  $getData_np_all[$i];
@@ -195,7 +190,7 @@
                                            } ?>
                                              <td class="bold"><?=$full_count;?></td>
                                         <?php foreach ($data_c as $key => $data_c_a) {
-                                         $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_approve_current_date >=', $sdate)->where('lead_approve_current_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array(); ?>
+                                         $getData =   $this->db->select('assigned,COUNT(*) as cnt')->where('lead_calling_date >=', $sdate)->where('lead_calling_date <=', $edate)->get_where('tblleads',array('assigned'=>$staff_list[0]['staffid'],'lead_category_id'=>$data_c_a))->result_array(); ?>
                                         <td class="bold"><?php echo($getData[0]['cnt'])?></td>
                                       <?php } ?>
 

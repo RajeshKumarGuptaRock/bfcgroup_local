@@ -5442,6 +5442,7 @@ function business_report1($start,$length)
                         'description' => $insert_csv['8'],  
 
                         'lead_callingdate' => $insert_csv['9'],
+                        'lead_calling_date' => date("Y-m-d"),
                         'lead_category_id' => $insert_csv['10'], 
                             
                         'ImEx_NextcallingDate' => $insert_csv['11'],    
@@ -5451,7 +5452,7 @@ function business_report1($start,$length)
                     // 'lead_created_date' => $insert_csv['14'], 
                         'ImEx_CreatedAt' => $insert_csv['14'], 
                         'lead_adname' => $insert_csv['15'],
-                        'lead_publishedearlier' => $insert_csv['16']     
+                        'lead_publishedearlier' => $insert_csv['16']  
                     );
 
                 
@@ -5885,7 +5886,8 @@ function business_report1($start,$length)
         {
 
             //$this->db->where('lead_created_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
-            $this->db->where('lead_created_date BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
+            $this->db->where('lead_calling_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
+            //$this->db->where('next_calling BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
         }
 
         $query = $this->db->get();
@@ -5946,6 +5948,7 @@ function business_report1($start,$length)
             //$this->db->where('lead_created_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
             $this->db->where('lead_created_date BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
         }
+        $this->db->where('previous_assigned',0);
 
         $query = $this->db->get();
         $result = $query->result_array();
@@ -6019,7 +6022,7 @@ function business_report1($start,$length)
          
         }
         
-        $this->db->order_by('lead_approve_current_date','ASC');
+        $this->db->order_by("lead_created_date",'ASC');
         
         $this->db->limit($limit, $start);
       if($search_text != ''){
@@ -6059,7 +6062,8 @@ function business_report1($start,$length)
         {
 
            // $this->db->where('lead_created_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
-           $this->db->where('lead_created_date BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
+            $this->db->where('lead_calling_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
+           //$this->db->where('next_calling BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
         }
        
         $query = $this->db->get('tblleads');
@@ -6127,6 +6131,7 @@ function business_report1($start,$length)
            // $this->db->where('lead_created_date BETWEEN "'.$start_date.'" and "'. $end_date.'"');
            $this->db->where('lead_created_date BETWEEN "'.$start_date.' 00:00:00.000" and "'. $end_date.' 23:59:59.997"');
         }
+        $this->db->where('previous_assigned',0);
        
         $query = $this->db->get('tblleads');
         // echo $this->db->last_query();die;

@@ -1167,6 +1167,7 @@
                     $(".addmore").hide(500);
                     $(".book_type_standard_custum").show(500);
                     $(".package_data_for_s_c").show(500);
+                    $('#total_amount').val('');
                       var total_amount_d = $("#total_amount").val();
                                             var discount_40 = ((40 / 100) * total_amount_d).toFixed(2);
                                             var discount_40_ = (40 / 100) * total_amount_d;

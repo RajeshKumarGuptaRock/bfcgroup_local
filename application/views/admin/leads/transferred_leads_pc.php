@@ -30,7 +30,7 @@
 
                         </div>
 <div class="row">
-  <div class="col-md-2">  <a href="JavaScript:Void(0);" onclick="goBack()"  class="btn btn-primary "
+  <div class="col-md-1">  <a href="JavaScript:Void(0);" onclick="goBack()"  class="btn btn-primary "
 
                                    onclick="">
 
@@ -140,11 +140,9 @@
 <input class="btn btn-primary" type='submit' name='submit_cat' value='Search'>
 </form>
 </div>
+</div>
+<div class="row">
  <div class="col-md-4">
- 
-    
-
-
 <form method='post' action="<?= base_url() ?>admin/leads/clear_filter_tran" >
    <input class="btn btn-primary" type='submit' name='submit' value='Clear Filter'>
     </form> 
@@ -168,15 +166,7 @@
 
                                </select> -->
 
-                 
-
-
-
-                        <div class="clearfix"></div>
-
-
-
-                        <hr class="hr-panel-heading"/>
+      
 
                         <div class="tableData">
 
@@ -199,30 +189,27 @@
     ?>
 
                            
-        <p><?php echo $links; ?></p>
-        <p><?php echo $pagination_number; ?></p>
+        
      
  <div>
          
             
         </div>
         <div class="row">
-          <div class="col-md-1">
-                   <form method='post' action="<?= base_url() ?>admin/leads/transferred_leads" >
-     <input type='text' name='search_global' value='<?= $search ?>'>
-     <input class="btn btn-primary" type='submit' name='submit' value='Search'>
-   </form>
- </div>
+          <div class="col-md-3">
+            <p><?php echo $links; ?></p>
+            <p><?php echo $pagination_number; ?></p>
+          </div>
+          <div class="col-md-3">
+            <form method='post' action="<?= base_url() ?>admin/leads/transferred_leads" >
+              <input type='text' name='search_global' value='<?= $search ?>'>
+              <input class="btn btn-primary" type='submit' name='submit' value='Search'>
+            </form>
+          </div>
+           <div class="col-md-6">
 
-
-                                    
-         
-   
-   
-    
-        
+           </div>
         </div>
-
    <br/>
     <div class="mytable">
 

@@ -76,7 +76,7 @@ class Pm_lead extends Admin_controller{
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow | 226010<br>";
                 $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2021';
+                $mail->Password   = 'gaurav@2022';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {
@@ -226,7 +226,7 @@ class Pm_lead extends Admin_controller{
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow - 226010<br>";
                 $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2021';
+                $mail->Password   = 'gaurav@2022';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {

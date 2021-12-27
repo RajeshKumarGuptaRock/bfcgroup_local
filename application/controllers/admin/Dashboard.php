@@ -14,7 +14,7 @@ class Dashboard extends Admin_controller
     public function index()
     {
 
-        print_r("test");exit;
+       // print_r("test");exit;
         
         close_setup_menu();
         $this->load->model('departments_model');

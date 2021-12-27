@@ -730,12 +730,14 @@ class DCR extends Admin_controller
 
         $filterrm=$_REQUEST['filterrm'];
 
-        $transctiondatestart=$_REQUEST['transctiondatestart'];
+        // $transctiondatestart=$_REQUEST['transctiondatestart'];
+        $transctiondatestart=(isset($_REQUEST['transctiondatestart']) && trim($_REQUEST['transctiondatestart'])!='')?date("Y-m-d",strtotime(trim($_REQUEST['transctiondatestart']))):'';;
 
-        $transctiondateend=$_REQUEST['transctiondateend'];
+        // $transctiondateend=$_REQUEST['transctiondateend'];
+        $transctiondateend=(isset($_REQUEST['transctiondateend']) && trim($_REQUEST['transctiondateend'])!='')?date("Y-m-d",strtotime(trim($_REQUEST['transctiondateend']))):'';
         $i =0;
-        $data_c = array(39,5,16,38,30,32,41);
-        $data_count = array(39,5,16,38,30,32,41,40);
+        $data_c = array(39,5,38,16,30,32,41);
+        $data_count = array(39,5,38,16,30,32,41,40);
 
         $arr = herapermission();
         $staffId = explode(",",$arr);
@@ -758,13 +760,13 @@ class DCR extends Admin_controller
          
           if($transctiondatestart!="")
           {
-             $transctiondatestart1 = $transctiondatestart.' 00:00:00';
-              $this->db->where('lead_approve_current_date >=', $transctiondatestart1);
+             $transctiondatestart1 = $transctiondatestart;
+              $this->db->where('lead_calling_date >=', $transctiondatestart1);
           }
           if($transctiondateend!="")
           {
-             $transctiondateend1 = $transctiondateend.' 23:59:59';
-             $this->db->where('lead_approve_current_date <=', $transctiondateend1);
+             $transctiondateend1 = $transctiondateend;
+             $this->db->where('lead_calling_date <=', $transctiondateend1);
           }
           if($filterrm!="")
           {
@@ -783,13 +785,13 @@ class DCR extends Admin_controller
                                 
                             if($transctiondatestart!="")
                             {
-                            $transctiondatestart2 = $transctiondatestart.' 00:00:00';
-                                $this->db->where('lead_approve_current_date >=', $transctiondatestart2);
+                            $transctiondatestart2 = $transctiondatestart;
+                                $this->db->where('lead_calling_date >=', $transctiondatestart2);
                             }
                             if($transctiondateend!="")
                             {
-                            $transctiondateend3 = $transctiondateend.' 23:59:59';
-                            $this->db->where('lead_approve_current_date <=', $transctiondateend3);
+                            $transctiondateend3 = $transctiondateend;
+                            $this->db->where('lead_calling_date <=', $transctiondateend3);
                             }
                             if($filterrm!="")
                             {
@@ -814,13 +816,13 @@ class DCR extends Admin_controller
                         
                     if($transctiondatestart!="")
                     {
-                    $transctiondatestart2 = $transctiondatestart.' 00:00:00';
-                        $this->db->where('lead_approve_current_date >=', $transctiondatestart2);
+                    $transctiondatestart2 = $transctiondatestart;
+                        $this->db->where('lead_calling_date >=', $transctiondatestart2);
                     }
                     if($transctiondateend!="")
                     {
-                    $transctiondateend3 = $transctiondateend.' 23:59:59';
-                    $this->db->where('lead_approve_current_date <=', $transctiondateend3);
+                    $transctiondateend3 = $transctiondateend;
+                    $this->db->where('lead_calling_date <=', $transctiondateend3);
                     }
                     if($filterrm!="")
                     {
@@ -855,13 +857,13 @@ class DCR extends Admin_controller
        
         if($transctiondatestart!="")
         {
-           $transctiondatestart1 = $transctiondatestart.' 00:00:00';
-            $this->db->where('lead_approve_current_date >=', $transctiondatestart1);
+           $transctiondatestart1 = $transctiondatestart;
+            $this->db->where('lead_calling_date >=', $transctiondatestart1);
         }
         if($transctiondateend!="")
         {
-           $transctiondateend1 = $transctiondateend.' 23:59:59';
-           $this->db->where('lead_approve_current_date <=', $transctiondateend1);
+           $transctiondateend1 = $transctiondateend;
+           $this->db->where('lead_calling_date <=', $transctiondateend1);
         }
         if($filterrm!="")
         {
@@ -879,13 +881,13 @@ class DCR extends Admin_controller
        
                     if($transctiondatestart!="")
                     {
-                       $transctiondatestart1 = $transctiondatestart.' 00:00:00';
-                        $this->db->where('lead_approve_current_date >=', $transctiondatestart1);
+                       $transctiondatestart1 = $transctiondatestart;
+                        $this->db->where('lead_calling_date >=', $transctiondatestart1);
                     }
                     if($transctiondateend!="")
                     {
-                       $transctiondateend1 = $transctiondateend.' 23:59:59';
-                       $this->db->where('lead_approve_current_date <=', $transctiondateend1);
+                       $transctiondateend1 = $transctiondateend;
+                       $this->db->where('lead_calling_date <=', $transctiondateend1);
                     }
                     if($filterrm!="")
                     {
@@ -906,13 +908,13 @@ class DCR extends Admin_controller
                       
                   if($transctiondatestart!="")
                   {
-                  $transctiondatestart2 = $transctiondatestart.' 00:00:00';
-                      $this->db->where('lead_approve_current_date >=', $transctiondatestart2);
+                  $transctiondatestart2 = $transctiondatestart;
+                      $this->db->where('lead_calling_date >=', $transctiondatestart2);
                   }
                   if($transctiondateend!="")
                   {
-                  $transctiondateend3 = $transctiondateend.' 23:59:59';
-                  $this->db->where('lead_approve_current_date <=', $transctiondateend3);
+                  $transctiondateend3 = $transctiondateend;
+                  $this->db->where('lead_calling_date <=', $transctiondateend3);
                   }
                   if($filterrm!="")
                   {
@@ -946,13 +948,13 @@ class DCR extends Admin_controller
          
             if($transctiondatestart!="")
             {
-               $transctiondatestart1 = $transctiondatestart.' 00:00:00';
-                $this->db->where('lead_approve_current_date >=', $transctiondatestart1);
+               $transctiondatestart1 = $transctiondatestart;
+                $this->db->where('lead_calling_date >=', $transctiondatestart1);
             }
             if($transctiondateend!="")
             {
-               $transctiondateend1 = $transctiondateend.' 23:59:59';
-               $this->db->where('lead_approve_current_date <=', $transctiondateend1);
+               $transctiondateend1 = $transctiondateend;
+               $this->db->where('lead_calling_date <=', $transctiondateend1);
             }
         
             $this->db->where_in('assigned', $loginid); 
@@ -967,13 +969,13 @@ class DCR extends Admin_controller
                         
                 if($transctiondatestart!="")
                 {
-                $transctiondatestart2 = $transctiondatestart.' 00:00:00';
-                    $this->db->where('lead_approve_current_date >=', $transctiondatestart2);
+                $transctiondatestart2 = $transctiondatestart;
+                    $this->db->where('lead_calling_date >=', $transctiondatestart2);
                 }
                 if($transctiondateend!="")
                 {
-                $transctiondateend3 = $transctiondateend.' 23:59:59';
-                $this->db->where('lead_approve_current_date <=', $transctiondateend3);
+                $transctiondateend3 = $transctiondateend;
+                $this->db->where('lead_calling_date <=', $transctiondateend3);
                 }
           
                 $this->db->where_in('assigned', $loginid); 
@@ -991,13 +993,13 @@ class DCR extends Admin_controller
                         
                         if($transctiondatestart!="")
                         {
-                        $transctiondatestart2 = $transctiondatestart.' 00:00:00';
-                            $this->db->where('lead_approve_current_date >=', $transctiondatestart2);
+                        $transctiondatestart2 = $transctiondatestart;
+                            $this->db->where('lead_calling_date >=', $transctiondatestart2);
                         }
                         if($transctiondateend!="")
                         {
-                        $transctiondateend3 = $transctiondateend.' 23:59:59';
-                        $this->db->where('lead_approve_current_date <=', $transctiondateend3);
+                        $transctiondateend3 = $transctiondateend;
+                        $this->db->where('lead_calling_date <=', $transctiondateend3);
                         }
                   
                         $this->db->where_in('assigned', $loginid); 
@@ -1521,7 +1523,9 @@ class DCR extends Admin_controller
           $this->db->select('*');
          if (!(is_admin())) {
           if ($useraid == 28) {
-         
+          $this->db->where_in('staff_id',$arr);
+          }elseif($useraid == 34){
+ $this->db->where_in('staff_id',$arr);
           }elseif($role ==92){
             //   if($staff_name!=''){
             //     $this->db->where_in('staff_id',$staff_name);

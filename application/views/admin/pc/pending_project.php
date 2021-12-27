@@ -371,7 +371,7 @@
             <div class="col-md-12">
              <p>Hi <b><?= $value->lead_author_name;?></b></p>
              <p>Thanks for short listing BFC as your publisher. It's great to finally have you on board.</p>
-             <p>Please allow me to start by introducing myself, I am Shivangi and I have been nominated by BFC Publications to guide your project, due to which, we shall remain in constant touch over the next few weeks.</p>
+             <p>Please allow me to start by introducing myself, I am Gaurav and I have been nominated by BFC Publications to guide your project, due to which, we shall remain in constant touch over the next few weeks.</p>
              <p>The idea behind this is to ensure that there is uninterrupted to-and-fro communication so you are up-to-date with the progress made at every turn.</p>
              <p>Just so you know, we are obligated to get your book published within minimum 45 days, starting the day after manuscript submission (No Commitments for final date)
              I also want you to know that we are open to suggestions moving forward. So if you'd like to talk about anything, or have a feedback, feel free to reach out through mail or over the phone.</p>
