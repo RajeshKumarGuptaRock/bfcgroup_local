@@ -445,11 +445,11 @@
                                         <label for="" class="control-label">Gross Amount</label>
                                         <input type="text" id="additional_gross_amount" name="additional_gross_amount" class="form-control" placeholder="0" value="" readonly>
                                     </div>
+                                    <?php } ?>
                                     <div class="form-group " app-field-wrapper="" >
                                         <label for="create_p_offer" class="control-label">Write Offer Details here</label><br>
                                         <textarea id="create_p_offer" name="create_p_offer" rows="3" cols="74"><?php echo $leadData->create_p_offer; ?></textarea>
                                          </div>
-                                      <?php } ?>
                                     <input type="hidden" id="number_of_pages" name="number_of_pages" class="form-control" value="1" readonly>
                                     <?php if ($leadData->ms_status == 'inprocess') { ?>
                                     <? } ?>

@@ -442,11 +442,12 @@
                                         <label for="" class="control-label">Gross Amount</label>
                                         <input type="text" id="additional_gross_amount" name="additional_gross_amount" class="form-control" placeholder="0" value="" readonly>
                                     </div>
-                                    <div class="form-group " app-field-wrapper="" >
+                                    
+                                      <?php } ?>
+                                      <div class="form-group " app-field-wrapper="" >
                                         <label for="create_p_offer" class="control-label">Write Offer Details here</label><br>
                                         <textarea id="create_p_offer" name="create_p_offer" rows="3" cols="74"><?php echo $leadData->create_p_offer; ?></textarea>
-                                         </div>
-                                      <?php } ?>
+                                    </div>
                                     <input type="hidden" id="number_of_pages" name="number_of_pages" class="form-control" value="1" readonly>
                                     <?php if ($leadData->lead_author_msstatus == 'inprocess') { ?>
                                     <? } ?>
@@ -1389,7 +1390,7 @@
                 var additional_gross_amount = $("#additional_gross_amount").val();
                 if (additional_gross_amount > 0) {
                   var total_amount_dd = $("#total_amount").val();
-                  var cost_of_additional = $("#cost_of_additional").val();
+                  var cost_of_additional = parseInt($("#cost_of_additional").val());
                   additional_gross_amount1 = parseInt(total_amount_dd)+parseInt(cost_of_additional)
                   $("#additional_gross_amount").val(additional_gross_amount1);
                   total_amount_d = additional_gross_amount1;
@@ -4941,10 +4942,10 @@ $(document).on('keyup', '#color_pages_number', function() {
             $("#total_amountd").text('₹ ' + $("#total_amount").val());
             $("#showing_additional_cost_data").text('₹ ' + $("#cost_of_additional").val());
             $("#showing_gross_additional_cost_data").text('₹ ' + $("#additional_gross_amount").val());
-            if ($("#create_p_offer").val() != '') {
+/*            if ($("#create_p_offer").val() != '') {
               $("#offers_data").show();
               $("#offers").text($("#create_p_offer").val());
-}
+}*/
             $(".modal-title").text("Package Details");
             $(".mail_body").hide();
             $(".preview-package").show();

@@ -3659,11 +3659,11 @@ public function table()
         $res1 = $this->db->get('tblleads')->row();
         $mainassigned = $res1->assigned;
         if($remark != ''){
-           $calling_date = date("d/m/Y");
+           $calling_date = date("Y-m-d");
            $lead_calling_date = date("Y-m-d");
            $created_date = date("Y-m-d h:i:s"); 
         }else{
-           $calling_date = date("d/m/Y");
+           $calling_date = date("Y-m-d");
            $lead_calling_date = date("Y-m-d");
            $created_date = date("Y-m-d h:i:s"); 
            
@@ -9177,7 +9177,7 @@ $servicess = implode(", ",  $filteredArray);
         $res1 = $this->db->get('tblleads')->row();
         $mainassigned = $res1->assigned;
         if($remark != ''){
-           $calling_date = date("d/m/Y"); 
+           $calling_date = date("Y-m-d"); 
         }else{
            $calling_date = ''; 
         }
@@ -11435,7 +11435,7 @@ echo $myJSON;
         $config = array();
         $config['base_url'] =  base_url() .'admin/leads/assignedleads_array/';
         $config['total_rows'] =$allcount;
-        $config['per_page'] = 10;
+        $config['per_page'] = 50;
         $config['full_tag_open'] = "<ul class='pagination'>";
         $config['full_tag_close'] = '</ul>';
         $config['num_tag_open'] = '<li>';
@@ -11464,6 +11464,7 @@ echo $myJSON;
          $data['start_date'] = $start_date;
          $data['end_date'] = $end_date;
          $data['staff_name'] = $staff_name;
+        //  echo $this->db->last_query();
         if(empty($this->uri->segment(4))){
              $curpage=$this->uri->segment(3); 
             // echo "test";

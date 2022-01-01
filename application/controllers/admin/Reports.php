@@ -2689,7 +2689,7 @@ class Reports extends Admin_controller
 
         $data['title'] = "Submit Business Updates";
         $this->db->select('staffid,  CONCAT(firstname, " ", lastname) AS  staffname');
-        $this->db->where('active', 1);
+        //$this->db->where('active', 1);
         // $this->db->where('department_id','12');
         $this->db->like('department_id', 12);
         

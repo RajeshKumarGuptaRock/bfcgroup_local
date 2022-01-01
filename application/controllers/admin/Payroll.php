@@ -1026,7 +1026,7 @@ class Payroll extends Admin_controller
          $data['staffs'] = $this->db->get('tblstaff')->result();
          // echo $this->db->last_query();exit;
          $data['list'] = array();
-            $month = '11';
+            $month = '12';
             $year = '2021';
             if($month == date("m") && $year == date("Y"))
             {

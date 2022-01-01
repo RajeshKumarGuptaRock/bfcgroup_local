@@ -214,7 +214,7 @@
       {
          /* print_r($this->input->post());
           exit;*/
-         //print_r($_POST);exit;
+         // print_r($_POST);exit;
 			$userid = $this->session->userdata('staff_user_id');
 			 $categoryid = $_POST['leave_category_id'];
 			 $filename = $_FILES['file']['name'];
@@ -296,7 +296,8 @@
 					$days = $start->diff($end, true)->days;
 					$sundays = intval($days / 7) + ($start->format('N') + $days % 7 >= 7);
 					$totalHoliday =  $sundays+$holiresponce;
-					$diff = $leaveDays -$totalHoliday;
+					echo $diff = $leaveDays -$totalHoliday;
+               exit;
 			 		//echo $applayDay."aa";
 			 	}else{
 			 		//echo "string-2";
@@ -353,7 +354,7 @@
 				 $totalLeaveQuota = $leaveQuota->leave_quota;
 			 }
 			 
-			 //echo $totalLeaveQuota.">".$applayDay;exit;
+			//  echo $totalLeaveQuota.">".$applayDay;exit;
 			 //if ( $diffenleav > $lquo ) {
 			 if ( $totalLeaveQuota < $applayDay ) {
 				  // echo $applayDay."qq1"; exit;
@@ -362,7 +363,7 @@
 			 } else {
 				
 				//  echo $diff;
-				 // echo $applayDay."qq2"; exit;
+				// echo $applayDay."qq2"; exit;
 				
 				$date = date('Y-m-d H:i:s');
 				if ( $filename ) {
@@ -383,10 +384,9 @@
 					  $fdata = $this->upload->data();
 					  $file = $fdata['file_name'];
 				   }
-				   
 				}
+
 				$app_id_update = $_POST['application_id'];
-				
 				$resultData = array('sandwitch_leave' => $sandwitchleave, 'sandwitch_avail' => $sandwitch, 'user_id' => $userid, 'leave_category_id' => $categoryid, 'reason' => $reason, 'half_shift' => $half_shift,  'leave_type' => $leave_type, 'leave_start_date' => $leave_start_date, 'leave_end_date' => $leave_end_date, 'duration' => $diff, 'application_status' => '1', 'application_date' => $date, 'attachment' => $filename, 'comments' => '');
 				
 				
@@ -410,21 +410,22 @@
 				redirect(base_url('admin/leave/index'));
 				
 			 }
-		}elseif($_POST['quota_exceed'] == 1 ){
+		}else if($_POST['quota_exceed'] == 1 ){  
+			//echo "hello"; exit;
 			$totalday = $this->db->query('SELECT  count(UserId) as cnt FROM deviceLogs_2_2020 WHERE year(LogDate) = 2020 AND (UserId = "'.$bio_id.'" OR staffId = "'.$staff_id.'") GROUP BY `UserId`, date(LogDate) HAVING cnt = 1');
 			  $missedLogs = $totalday->result();
 			  $totalMissedLog = 0;
 				foreach($missedLogs as $missedLog){
 					$totalMissedLog = $totalMissedLog+$missedLog->cnt;
 				}
-				if($totalMissedLog > 0){
+				if($totalMissedLog > 0){ //echo "hello-1";
 					  $totalMissedDays = $totalMissedLog/2;
-				  }else{
+				}else{ // echo "hello-2";
 					  $totalMissedDays = 0;
-				  }
+				}
 				  
 			$totalAppliedLeave = $this->leave_management->appliedTotalLeave($userid, $categoryid);
-			 //print_r($totalAppliedLeave);exit;
+			 // print_r($totalAppliedLeave);exit;
 			 $appliedLeave = $totalAppliedLeave->duration;
 			 
 			 if($categoryid == 0){
@@ -434,8 +435,10 @@
 				 $leaveQuota = $this->leave_management->getLeaveQuota($categoryid);
 				 $totalLeaveQuota = $leaveQuota->leave_quota;
 			 }
+
 			 $leftLeaveQuota = $totalLeaveQuota-$appliedLeave+$totalMissedDays;
-			 //echo $leftLeaveQuota;exit;
+			 //echo $leftLeaveQuota;
+			 exit;
 			 
 			$leave_start_date = $_POST['multiple_days_start_date'];
 			$leave_end_date = $_POST['multiple_days_end_date'];
@@ -444,8 +447,9 @@
 			
 			$after_leave_start_date = date('Y-m-d', strtotime($leave_start_date. ' + '.$leftLeaveQuota.' days'));
 			$after_leave_end_date = date('Y-m-d', strtotime($leave_end_date. ' - '.$leftLeaveQuota.' days'));
+
 			$end_date_for_quota = date('Y-m-d', strtotime($leave_start_date. ' + '. $mainEndDate .' days'));
-			//echo $after_leave_start_date."<br>".$leftLeaveQuota;exit;
+			echo $after_leave_start_date."<br>".$leftLeaveQuota;exit;
 
 				$datetime1 = new DateTime($leave_start_date);
 				$datetime2 = new DateTime($leave_end_date);
@@ -456,9 +460,9 @@
 				$diff = $tempcount + $tempadd . " Days";
 				$applayDay = $tempcount + $tempadd;
 				//$diffenleav = $tempcount+$tempadd;
-				//echo $applayDay;exit;
+				// echo $applayDay;exit;
 				$lwpQuota = $applayDay-$leftLeaveQuota;
-				//echo $lwpQuota;exit;
+				// echo $lwpQuota; exit;
 				
 				
 				$date = date('Y-m-d H:i:s');
@@ -482,12 +486,14 @@
 				   }
 				   
 				}
-				//echo $leave_start_date."<br>".$end_date_for_quota."<br>".$leftLeaveQuota."<br>type end date:".$leave_end_date;exit;
+				// echo $leave_end_date;
+				// echo $leave_start_date."<br>".$end_date_for_quota."<br>".$leftLeaveQuota."<br>type end date:".$leave_end_date;
+				// exit;
 				
 				//if($leftLeaveQuota >= $applayDay){
 				if($lwpQuota > 0){
-
-					$this->db->where('leave_category', "LWP");
+					
+				   $this->db->where('leave_category', "LWP");
 				   $category = $this->db->get('tblleavecategory')->result(); 
 				   $category_id = $category[0]->leave_category_id;
 				   $app_id_update = $_POST['application_id'];
@@ -497,24 +503,33 @@
 					//$lastid = $this->db->insert_id(); 
 					$this->leave_management->leavesubmitreport($lastid);
 					$msg = "New Leave Application Added Successfully..";
-					
 				}
+
+
+
+
 				if($leftLeaveQuota != ""){
 					$category_id = $categoryid;
-					$resultData = array('sandwitch_leave' => $sandwitchleave, 'sandwitch_avail' => $sandwitch, 'user_id' => $userid, 'leave_category_id' => $category_id, 'reason' => $reason, 'half_shift' => $half_shift,  'leave_type' => $leave_type, 'leave_start_date' => $leave_start_date, 'leave_end_date' => $end_date_for_quota, 'duration' => $leftLeaveQuota, 'application_status' => '1', 'application_date' => $date, 'attachment' => $filename, 'comments' => '');
+
+
+
+
+					$resultData = array('sandwitch_leave' => $sandwitchleave, 'sandwitch_avail' => $sandwitch, 'user_id' => $userid, 'leave_category_id' => $category_id, 'reason' => $reason, 'half_shift' => $half_shift,  'leave_type' => $leave_type, 'leave_start_date' => $leave_start_date, 'leave_end_date' => $leave_end_date, 'duration' => $applayDay, 'application_status' => '1', 'application_date' => $date, 'attachment' => $filename, 'comments' => '');
 					//$this->db->insert('tblleaveapplication', $resultData);
 
 					if($_POST['application_id'] == ""){
+						//  print_r($resultData);
+						// die();
 						$this->db->insert('tblleaveapplication', $resultData);
 						$lastid = $this->db->insert_id();
 						$msg = "New Leave Application Added Successfully..";
-					}elseif($_POST['application_id'] != ""){
+					}elseif($_POST['application_id'] != ""){//  echo "hello-2"; die();
 						$this->db->where('leave_application_id', $app_id_update);
 						$this->db->update('tblleaveapplication', $resultData);
 						$lastid = $_POST['application_id'];
 						$msg = "Leave Application Updated Successfully..";
 					}
-
+					// exit();
 					//$lastid = $this->db->insert_id();
 					$this->leave_management->leavesubmitreport($lastid);
 				}

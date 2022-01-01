@@ -171,13 +171,72 @@ class ProjectCordinatorDashboard extends Admin_controller{
         $this->load->view('admin/Project_Cordinator/assign_pc',$list); 
 		
 	}
-	public function assign_pc_to_pm($value='')
+	public function assign_pc_to_pm11($value='')
 	{
 		$id = $this->input->post('hidden_id');
 		$data  = array(
 			'pm_assign_to' => $this->input->post('pm_assign')
 		);
 					$this->db->where('staffid',$this->input->post('hidden_id'));
+		$update = $this->db->update('tblstaff',$data);
+		// echo $this->db->last_query();die;
+		if ($update) {
+			$pc_details = $this->db->get_where('tblstaff',array('staffid'=>$this->input->post('hidden_id')))->row();
+			$pm_details = $this->db->get_where('tblstaff',array('staffid'=>$this->input->post('pm_assign')))->row();
+						$this->db->select('tblstaff.pm_assign_to')
+				         ->from('tblleads')
+				         ->join('tblstaff', 'tblleads.assigned = tblstaff.staffid');
+				          $this->db->where('tblleads.id',$id);
+						$query_data = $this->db->get();
+						$return = $query_data->row();
+						$by = $this->session->userdata('staff_user_id');
+						$this->db->select('tblstaff.staffid, tblstaff.role,tblstaff.firstname,tblstaff.lastname, tblroles.*')
+				         ->from('tblstaff')
+				         ->join('tblroles', 'tblstaff.role = tblroles.roleid');
+				          $this->db->where('tblstaff.staffid',$by);
+						$query = $this->db->get();
+						$ret = $query->row();
+						     // echo $this->db->last_query();die;
+		            	 $data1 = array(
+		            	 	'notify_to'=> $return->pm_assign_to,
+					        'user_id'=> $id,
+					        'take_by'=> $by,
+							'role' => $ret->name,
+							'project_name' => '',
+							'author_name' => '',
+							'book_name' => '',
+							'action' => 16,
+							'message' => 'Pc Assign successfully',
+							'discription' => 'PC '.$pc_details->firstname.' '.$pc_details->lastname.'is assign to the Pm '.$pm_details->firstname.' '.$pm_details->lastname,
+						);
+				        $this->db->insert('lead_all_action',$data1);
+				       // echo $this->db->last_query();die;
+			set_alert('success', _l('Update succesfully'));
+		redirect($_SERVER['HTTP_REFERER']);
+		}else{
+			set_alert('danger', _l('Something went wrong'));
+		redirect($_SERVER['HTTP_REFERER']);
+		}
+
+	}
+	public function assign_pc_to_pm($value='')
+	{
+		$id = $this->input->post('hidden_id');
+		$get_prev_assigned_id = $this->db->select('pm_assign_to')->get_where('tblstaff',array('staffid'=>$id))->row();
+		$prev_assigned_id = $get_prev_assigned_id->pm_assign_to;
+		$pre_data  = array(
+			'pre_pm_assign_to' => $prev_assigned_id			
+		);
+		$this->db->where('staffid',$this->input->post('hidden_id'));
+		$this->db->update('tblstaff',$pre_data);
+
+		
+
+		$data  = array(
+			'pm_assign_to' => $this->input->post('pm_assign'),
+			'pm_assign_date' => Date('Y-m-d')
+		);
+		$this->db->where('staffid',$this->input->post('hidden_id'));
 		$update = $this->db->update('tblstaff',$data);
 		// echo $this->db->last_query();die;
 		if ($update) {

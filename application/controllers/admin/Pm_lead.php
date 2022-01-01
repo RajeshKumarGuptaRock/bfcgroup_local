@@ -43,6 +43,7 @@ class Pm_lead extends Admin_controller{
             $leadId = end($this->uri->segment_array());
             $packageData = $this->leadsdata->getleadsData($leadId);
             $to = $packageData->email;
+            // $to = "vineet.bfcinfotech@gmail.com";
             $this->load->library('phpmailer_lib');
             $mail = $this->phpmailer_lib->load();
             $mail->IsSMTP();
@@ -76,8 +77,11 @@ class Pm_lead extends Admin_controller{
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow | 226010<br>";
                 $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2022';
+                $mail->Password   = 'gaurav@2022bfc';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
+                // $mail->Username   = 'shwetamishra@bfcpublications.com';
+                // $mail->Password   = 'Shweta@12345';
+                // $mail->SetFrom('shwetamishra@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {
                 $message .="Sr. Project Manager<br>";
@@ -226,7 +230,7 @@ class Pm_lead extends Admin_controller{
                 $message .="Email: gaurav@bfcpublications.com <br>";
                 $message .="CP - 61| Viraj Khand | Gomti Nagar | Lucknow - 226010<br>";
                 $mail->Username   = 'gaurav@bfcpublications.com';
-                $mail->Password   = 'gaurav@2022';
+                $mail->Password   = 'gaurav@2022bfc';
                 $mail->SetFrom('gaurav@bfcpublications.com', "BFC Publications");
                 
             }else if ($staff_id == 61) {

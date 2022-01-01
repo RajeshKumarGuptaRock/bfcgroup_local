@@ -56,10 +56,8 @@
 				$('#ticket-service-modal').modal('show');
            }
         });
-
-	
-	
  }
+
  function deleteLeave(elem)
  {    
     //$('#ticket-service-modal').modal('show');
@@ -467,237 +465,359 @@
                        <!--  <span class="add-title"> New Leave</span> -->
                     </h4>
                 </div>
+
                 <div class="modal-body">
+                   <form autocomplete="off" id="saveleave" action="<?php echo base_url(); ?>admin/leave/saveleave" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="row">
                         <div class="col-sm-8">
                           <div class="alertmessage"></div> <!-- Save-leave-form -->
-                <form autocomplete="off" id="" action="<?php echo base_url(); ?>admin/leave/saveleave" method="post" enctype="multipart/form-data" class="form-horizontal">
+                
                     <div class="panel_controls">
+                            <input type="hidden" name="leave_category_nm" id="leave_category_nm" value="">
                             <input type="hidden" id="user_id" value="17">
                             <input type="hidden" id="current_user_id" value="<?php echo $this->session->userdata('staff_user_id'); ?>">
-							<input type="hidden" name="application_id" id="application_id" value="">
-							
-                            <div class="form-group">
-                            <label for="field-1" class="col-sm-4 control-label">Leave Category<span class="required"> *</span></label>
+        							<input type="hidden" name="application_id" id="application_id" value="">
+        							
+                                    <div class="form-group">
+                                    <label for="field-1" class="col-sm-4 control-label">Leave Category<span class="required"> *</span></label>
 
-                            <div class="col-sm-8 ">
-                                <select name="leave_category_id" style="width: 100%;" class="form-control select_box select2-hidden-accessible" id="leave_category_id" required="" data-parsley-id = "4" tabindex="-1" aria-hidden="true">
-                                    <option value="">Select Leave Category</option>
-                                    <?php $i=1;  $total_Approveleave=0; 
-                                     foreach($leaveCategory as $category) {
-                                        $catId=$category['leave_category_id']; 
-                                        $loginid=$this->session->userdata('staff_user_id'); 
-                                       $this->db->select_sum('duration');
-                                        $this->db->where('leave_category_id',$catId); 
-                                        $this->db->where('application_status','2'); 
+                                    <div class="col-sm-8 ">
+                                        <select name="leave_category_id" style="width: 100%;" class="form-control select_box select2-hidden-accessible" id="leave_category_id" required="" data-parsley-id = "4" tabindex="-1" aria-hidden="true" onchange="categLeave(this)">
+                                            <option value="">Select Leave Category</option>
+                                            <?php 
+                                              $i=1;  $total_Approveleave=0; 
+                                              $staff_id = $this->session->userdata('staff_user_id');
+                                              $bio_id = $this->session->userdata('staff_bio_id');
+
+
+                                              $this->db->select('DISTINCT(LogDate)');
+                                              $this->db->group_start();
+                                              $this->db->where('staffId', $staff_id);
+                                              $this->db->or_where('UserId',$bio_id);
+                                              $this->db->group_end();
+                                              $this->db->where('date(LogDate)  >=', '2021-10-01');
+                                              $this->db->where('date(LogDate) <=', $end);
+                                              $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+                                              $this->db->where('date_format(LogDate,"%H:%i") < "18:30"');
+                                              $late_data = $this->db->get('deviceLogs_2_2020')->result();
+                                              //echo $this->db->last_query();
+
+                                              $this->db->select('DISTINCT(LogDate)');
+                                              $this->db->group_start();
+                                              $this->db->where('staffId',  $staff_id);
+                                              $this->db->or_where('UserId', $bio_id);
+                                              $this->db->group_end();
+                                              $this->db->where('date(LogDate)  >=', '2021-10-01');
+                                              $this->db->where('date(LogDate) <=', $end);
+                                              $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+                                              $this->db->where('date_format(LogDate,"%H:%i") < "14:30"');
+                                              $late_mm = $this->db->get('deviceLogs_2_2020')->result();
+                                              // echo $this->db->last_query();
+                                              //count($late_mm);
+                                              
+                                              $empId = $this->session->userdata('staff_user_id');
+                                              $empBio = $this->session->userdata('staff_bio_id');
+
+                                              $late_data = count($late_data);
+
+                                              $totalLeaveHD = $this->db->query("SELECT DISTINCT DATE(`deviceLogs_2_2020`.`LogDate`), `tblleaveapplication`.`leave_start_date`, `tblleaveapplication`.`duration` FROM `deviceLogs_2_2020` RIGHT JOIN `tblleaveapplication` ON DATE(`deviceLogs_2_2020`.`LogDate`)=DATE(`tblleaveapplication`.`leave_start_date`) AND `deviceLogs_2_2020`.`staffId`=`tblleaveapplication`.`user_id` WHERE `staffId` = $empId AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND `tblleaveapplication`.`application_status`='2' AND time(LogDate) >= '09:30:00' AND time(LogDate) < '18:30:00' ORDER BY `DeviceLogId` DESC")->result();
+                                              $totalHDL = count($totalLeaveHD);
+
+                                               
+                                              $today = date("Y-m-d");
+                                              $totallockOut = $this->db->query("SELECT DATE(`deviceLogs_2_2020`.`LogDate`) as lgdate,count(*) as cnt FROM `deviceLogs_2_2020` WHERE (`staffId` = $empId ) AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND date(LogDate) != '$today' group by DATE(`deviceLogs_2_2020`.`LogDate`) ")->result();
+
+                                              $counter = 0;
+                                               foreach($totallockOut as $clockO){
+                                                  if($clockO->cnt==1){
+                                                      $cstCheck =$this->db->query("SELECT * FROM `deviceLogs_2_2020` WHERE `UserId`='$empBio' AND date(LogDate)='$clockO->lgdate' AND( time(LogDate)<='09:45:00' OR time(LogDate)>= '18:30:00') ")->result();
+                                                      if(count($cstCheck)%2==1){
+                                                      }else{
+                                                          $counter++ ;
+                                                      }
+                                                  }
+                                               }
+
+
+                                              if($late_data == 0){
+                                                  $missed_leave =  ($counter+$late_data)/2;
+                                              }
+                                              // else if($lateClock> 0){
+                                              //    $missed_leave =  ($counter+$lateClock)/2;
+                                              // }
+                                              else{
+                                                  $missed_leave =  ($counter+$late_data-$totalHDL)/2;
+                                              }
+
+
+                                             foreach($leaveCategory as $category) {
+                                                  $leave_id = $category['leave_category_id'];
+                                                  $confirmationDate = get_confirmation_date_satffwise($this->session->userdata('staff_user_id'));
+                                                  $confDate = $confirmationDate->confirmation_date;
+                                                  if(($start<$confDate) && ($end>$confDate)){
+                                                      $start_date = $confDate;
+                                                      $date=1;
+                                                  }
+
+                                                  if(($start<$confDate) && ($end<$confDate)){
+                                                     $start_date = $start; //null
+                                                     $date=0;
+                                                  }
+
+                                                  if(($start>$confDate) && ($end>$confDate)){
+                                                      $start_date = $start;
+                                                      $date=1;
+                                                  }
+
+                                                  $leave_start = DateTime::createFromFormat('Y-m-d',$start_date);
+                                                  $leave_end = DateTime::createFromFormat('Y-m-d',$end);
+                                                  $diffMonths = $leave_end->diff($leave_start)->format("%m")+1;
+                                                  $leave_quota = $category['leave_quota'];
+                                                  //$total = $status['total'];
+                                                  $this->db->select_sum('duration');
+                                                  $this->db->where('user_id',$this->session->userdata('staff_user_id'));
+                                                  $this->db->where('leave_category_id',$leave_id);
+                                                  $this->db->where('application_status',2);
+                                                  $this->db->where('leave_start_date >=', $start_date);
+                                                  $this->db->where('leave_start_date <=', $end);
+                                                  $totalData = $this->db->get('tblleaveapplication')->result();
+                                                  // print_r($totalData);
+
+                                                  $q = 12/$leave_quota;
+                                                  $quota = $diffMonths/$q;
+
+                                                  if($date==1){
+                                                      $quota =  $quota;
+                                                      //$total = $total;
+                                                  }else{
+                                                      $quota = 0;
+                                                      //$total = 0;
+                                                  }
+
+                                                  if($totalData[0]->duration>0){ 
+                                                      $total = $totalData[0]->duration;
+                                                      $color = 'style="color:#FF0000"';
+                                                  }else{ 
+                                                      $total = 0;
+                                                      $color = '';
+                                                  }
+
+                                                   if ($missed_leave > 0) {
+                                                            if ($category['leave_category'] == 'CL') {
+                                                                $temp = $total + $missed_leave;
+                                                                if ( $temp > $quota) {
+                                                                    $missed_leave = ($missed_leave+$total)- $quota;
+                                                                    $total = $quota;
+                                                                } else {
+                                                                    $total = $total + $missed_leave;
+                                                                    $missed_leave = 0;
+                                                                }
+                                                            }
+                                                            
+                                                            if ($category['leave_category'] == 'EL') {
+                                                                if ( ($total + $missed_leave) > $quota) {
+                                                                    $missed_leave =($missed_leave+$total)- $quota;
+                                                                    $total = $quota;
+                                                                } else {
+                                                                    // echo "ss";
+                                                                    $total = $total + $missed_leave;
+                                                                    $missed_leave = 0;
+                                                                }
+                                                            }
+                                                            
+                                                            if ($category['leave_category'] == 'LWP') {
+                                                                
+                                                                $total += $missed_leave;
+                                                                $missed_leave = 0;
+                                                            }
+                                                        }
+                                                 ?>
+                                                 
+                                                 <option <?php if($total >=$quota) echo 'disabled'; ?> value="<?php echo  $category['leave_category_id']; ?>"><?php echo  $category['leave_category']; ?></option>
+                                            <?php $i++;
+                                       
+                                        }?>
+                                        <?php
+                                        
+                                        $this->db->select('sp_leave');
+                                        $this->db->where('staffid', $loginid);
+                                        $spstaff = $this->db->get('tblstaff')->row();
+                                        $spstaffid = $spstaff->sp_leave;
+                                        
+                                        $this->db->select_sum('duration');
+                                        $this->db->where('user_id', $loginid);
+                                        $this->db->where('application_status','2');
                                         $this->db->where('date(leave_start_date) >=', $start);
                                         $this->db->where('date(leave_end_date) <=', $end);
-                                        $this->db->where('user_id',$loginid); 
-                                        $result=$this->db->get('tblleaveapplication')->result();
-                                        $to = $result[0]->duration;
-                                        
-                                        
-                                        $count=count($result); 
-                                        if($to == null)
-                                        { $to = "0"; } 
-                                        
-                                        // echo $to;
-                                        // echo $category['totalleave'];
-                                        
-                                         ?>
-                                         
-                                         <option <?php if($to >=$category['leave_quota']) echo 'disabled'; ?> value="<?php echo  $category['leave_category_id']; ?>"><?php echo  $category['leave_category']; ?></option>
-                                    <?php $i++;
-                               
-                                }?>
-                                <?php
-                                
-                                $this->db->select('sp_leave');
-                            $this->db->where('staffid', $loginid);
-                            $spstaff = $this->db->get('tblstaff')->row();
-                            $spstaffid = $spstaff->sp_leave;
-                            
-                            $this->db->select_sum('duration');
-                            $this->db->where('user_id', $loginid);
-                            $this->db->where('application_status','2');
-                            $this->db->where('date(leave_start_date) >=', $start);
-                            $this->db->where('date(leave_end_date) <=', $end);
-                            $specialleave=$this->db->get('tblleaveapplication')->row();
-                            $specialleavetaken = $specialleave->duration;
-                            
-                            
-                            if($total_special_leave->quota != "" && $total_special_leave->quota > $applied_special_leave->duration && ($notice_date == null || $currentDate < $notice_date)) {
-                                ?>
-                                
-                                    <option value="0">Special Leave</option>
+                                        $specialleave=$this->db->get('tblleaveapplication')->row();
+                                        $specialleavetaken = $specialleave->duration;
                                     
-                                
-                                <?}?>
-                                
-                                ?>
-                                </select> 
+                                    
+                                    if($total_special_leave->quota != "" && $total_special_leave->quota > $applied_special_leave->duration && ($notice_date == null || $currentDate < $notice_date) ) {
+                                        ?>
+                                          <option value="0">Special Leave</option>
+                                        <?}?>
+                                        ?>
+                                        </select> 
 
-                            </div>
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-8">
-                                <div class="required" id="username_result"></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                           <div class="row no-margin">
-                            <label class="col-sm-4 control-label">Duration <span class="required"> *</span></label>
-                            <div class="col-sm-8">
-                                <label class="radio-inline c-radio">
-                                    <input type="radio" id="single_leave_id" name="leave_type" value="single_day" checked="" data-parsley-multiple="leave_type" data-parsley-id="7" >
-                                    Single day</label>
-                                <label class="radio-inline c-radio">
-                                    <input type="radio" name="leave_type" value="multiple_days" id="multiple_days_id" data-parsley-multiple="leave_type">
-                                   Multiple days</label>
-                              <label class="radio-inline c-radio">
-                                    <input type="radio" name="leave_type" value="half_day" id="half_day_id" data-parsley-multiple="leave_type">
-                                    Half Day</label> 
-                            </div>
-                          </div>
-                        </div>
-
-
-
-                        <div class="form-group" id="single_day">
-                           <div class="row no-margin">
-                            <label class="col-sm-4 control-label">Start Date 
-                              <span class="required"> *</span></label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <input type="text" name="single_day_start_date"  class="form-control datepicker sandwitchcheck" data-date-min-date="" placeholder="Select A Date..">
-                                    <div class="input-group-addon">
-                                        <a href="#"><i class="fa fa-calendar"></i></a>
                                     </div>
-                                    <select name="half_shift" style="width: 100%; display: none;" class="form-control select_box select2-hidden-accessible" id="half_shift"  tabindex="-1" aria-hidden="true">
-                                    <option value="" >Select Shift</option>                                        
-                                         <option value="Morning">Morning</option>                                        
-                                         <option value="Evening">Evening</option>
-                                                                    </select> 
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-8">
+                                        <div class="required" id="username_result"></div>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                   <div class="row no-margin">
+                                    <label class="col-sm-4 control-label">Duration <span class="required"> *</span></label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline c-radio">
+                                            <input type="radio" id="single_leave_id" name="leave_type" value="single_day" data-parsley-multiple="leave_type" data-parsley-id="7" required>
+                                            Single day</label>
+                                        <label class="radio-inline c-radio">
+                                            <input type="radio" name="leave_type" value="multiple_days" id="multiple_days_id" data-parsley-multiple="leave_type">
+                                           Multiple days</label>
+                                      <label class="radio-inline c-radio">
+                                            <input type="radio" name="leave_type" value="half_day" id="half_day_id" data-parsley-multiple="leave_type">
+                                            Half Day</label> 
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group" id="single_day">
+                                   <div class="row no-margin">
+                                    <label class="col-sm-4 control-label">Start Date 
+                                      <span class="required"> *</span></label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input type="text" name="single_day_start_date"  class="form-control datepicker sandwitchcheck" data-date-min-date="" placeholder="Select A Date..">
+                                            <div class="input-group-addon">
+                                                <a href="#"><i class="fa fa-calendar"></i></a>
+                                            </div>
+                                            <select name="half_shift" style="width: 100%; display: none;" class="form-control select_box select2-hidden-accessible" id="half_shift"  tabindex="-1" aria-hidden="true">
+                                            <option value="" >Select Shift</option>                                        
+                                                 <option value="Morning">Morning</option>                                        
+                                                 <option value="Evening">Evening</option>
+                                                                            </select> 
+                                        </div>
+                                    </div>
+                                        
+                                  </div>
+                                </div>
+                                <div id="multiple_days" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Start Date
+                                          <span class="required"> *</span>
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input type="text" name="multiple_days_start_date" id="start_date" class="form-control sandwitchcheck" placeholder="Select Start Date..">
+                                                <div class="input-group-addon" >
+                                                    <a href="#"><i class="fa fa-calendar"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">End Date <span class="required"> *</span></label>
+
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input type="text" name="multiple_days_end_date" id="end_date"  class="form-control datepicker sandwitchcheck" value="" data-format="dd-mm-yyyy" data-parsley-id="17" placeholder="Select End Date..">
+                                                <div class="input-group-addon">
+                                                    <a href="#"><i class="fa fa-calendar"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                      <?php 
+                            
+                         
+                      ?>
+        							<div class="form-group quota_exceed_data" style="display:none; ">
+        								<div class="col-sm-4"></div>
+                          <div class="col-sm-8">
+                            <div class="input-group">
+
+                              <label class="checkbox-inline" style="pointer-events: none;">
+          										  <input type="checkbox" value="0" name="quota_exceed" class="quota_exceed" checked readonly /><span style="color: #fb0000; ">Your Quota Exceeded. Now You Are Applied In</span>
+                                <span id="leave_nm"  style="color: #fb0000;"></span>
+          										</label>
                             </div>
-                                
                           </div>
-                        </div>
-                        <div id="multiple_days" style="display: none;">
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">Start Date 
-                                  <span class="required"> *</span>
-                                </label>
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <input type="text" name="multiple_days_start_date" id="start_date" class="form-control sandwitchcheck" placeholder="Select Start Date..">
-                                        <div class="input-group-addon" >
-                                            <a href="#"><i class="fa fa-calendar"></i></a>
+                      </div>
+                                </div>
+                                <div class="form-group" id="hours" style="display: none;">
+                                    <label class="col-sm-4 control-label">Start Date
+                                      <span class="required"> *</span></label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" name="hours_start_date" id="hours_start_date"  class="form-control datepicker sandwitchcheck" value="" data-format="dd-mm-yyyy" data-parsley-id="19" placeholder="Select A Date..">
+                                            <div class="input-group-addon">
+                                                <a href="#"><i class="fa fa-calendar"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="col-sm-5 control-label"> Hours                                    <span class="required"> *</span></label>
+                                        <div class="col-sm-7 pr0">
+                                            <select name="hours" id="hours" class="form-control" data-parsley-id="21">
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                                <option value="4">04</option>
+                                                <option value="5">05</option>
+                                                <option value="6">06</option>
+                                                <option value="7">07</option>
+                                                <option value="8">08</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-4 control-label">End Date <span class="required"> *</span></label>
 
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <input type="text" name="multiple_days_end_date" id="end_date"  class="form-control datepicker sandwitchcheck" value="" data-format="dd-mm-yyyy" data-parsley-id="17" placeholder="Select End Date..">
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="fa fa-calendar"></i></a>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="field-1" class="col-sm-4 control-label">Reason</label>
+                                    <div class="col-sm-8"><textarea id="present" name="reason" class="form-control" rows="6" data-parsley-id="23"></textarea></div>
+                                </div>
+
+                                
+                                <div class="form-group" style="margin-bottom: 0px">
+                                    <label for="field-1" class="col-sm-4 control-label">Attachment</label>
+
+                                    <div class="col-sm-8">
+                                       <input type="file" name="file" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-              <?php 
-                    
-                 
-              ?>
-							<div class="form-group quota_exceed_data" style="display:none; ">
-								<div class="col-sm-4"></div>
-                                <div class="col-sm-8">
-                                    <div class="input-group">
+                                  <?php 
+                                      $this->db->where('application_status','2'); 
+                                      $this->db->where('date(leave_start_date) >=', $start);
+                                      $this->db->where('date(leave_end_date) <=', $end);
+                                      $this->db->where('user_id',$loginid);
+                                      $this->db->where('sandwitch_avail', 1); 
+                                      $result=$this->db->get('tblleaveapplication')->result();
+                                      //count($result);
+                                      if(count($result)==0){
+                                  ?>
+                                <div id="sandwitchdiv" class="form-group" style="margin-bottom: 0px;display: none;">
+                                    <label for="field-1" class="col-sm-4 control-label">Sandwitch Leave Exception</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline c-radio">
+                                          <input id="sandwitchleave" type="hidden" name="sandwitchleave" value="0" />
+                                          <input class="sandcheckbox"  type="checkbox" name="sandwitch" value="1" onchange="sandwitch()">
+                                        </label>                              
+                                    </div>
+                                </div>  
+                              <?php }?>
+                                <br/><br/>
+                                <div class="form-group mt-lg">
+                                    <div class="col-sm-offset-4 col-sm-5">
+                                        <button type="submit" id="leave-save-button"  name="sbtn" value="1" class="btn btn-primary leaveApply">Apply
+                                        </button>
 
-                   <label class="checkbox-inline">
-										  <input type="checkbox" value="0" name="quota_exceed" class="quota_exceed" checked="checked" readonly="readonly" /><span style="color: #fb0000;">Your Quota Exceeded. Now You Are Applied In LWP.</span>
-										</label>
-                    
+                                        <p class="text-danger leaveMsg" style="display: none">Your Quota Exceeded <span class="leave_N"></span></p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="hours" style="display: none;">
-                            <label class="col-sm-4 control-label">Start Date
-                              <span class="required"> *</span></label>
-                            <div class="col-sm-4">
-                                <div class="input-group">
-                                    <input type="text" name="hours_start_date" id="hours_start_date"  class="form-control datepicker sandwitchcheck" value="" data-format="dd-mm-yyyy" data-parsley-id="19" placeholder="Select A Date..">
-                                    <div class="input-group-addon">
-                                        <a href="#"><i class="fa fa-calendar"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <label class="col-sm-5 control-label"> Hours                                    <span class="required"> *</span></label>
-                                <div class="col-sm-7 pr0">
-                                    <select name="hours" id="hours" class="form-control" data-parsley-id="21">
-                                        <option value="1">01</option>
-                                        <option value="2">02</option>
-                                        <option value="3">03</option>
-                                        <option value="4">04</option>
-                                        <option value="5">05</option>
-                                        <option value="6">06</option>
-                                        <option value="7">07</option>
-                                        <option value="8">08</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="field-1" class="col-sm-4 control-label">Reason</label>
-                            <div class="col-sm-8"><textarea id="present" name="reason" class="form-control" rows="6" data-parsley-id="23"></textarea></div>
-                        </div>
-
-                        
-                        <div class="form-group" style="margin-bottom: 0px">
-                            <label for="field-1" class="col-sm-4 control-label">Attachment</label>
-
-                            <div class="col-sm-8">
-                               <input type="file" name="file" class="form-control">
-                            </div>
-                        </div>
-                         <?php 
-                                  $this->db->where('application_status','2'); 
-                                  $this->db->where('date(leave_start_date) >=', $start);
-                                  $this->db->where('date(leave_end_date) <=', $end);
-                                  $this->db->where('user_id',$loginid);
-                                  $this->db->where('sandwitch_avail', 1); 
-                                  $result=$this->db->get('tblleaveapplication')->result();
-                                  //count($result);
-                                  if(count($result)==0){
-                              ?>
-                        <div id="sandwitchdiv" class="form-group" style="margin-bottom: 0px;display: none;">
-                            <label for="field-1" class="col-sm-4 control-label">Sandwitch Leave Exception</label>
-
-                            <div class="col-sm-8">
-                             
-                               <label class="radio-inline c-radio">
-                                   <input id="sandwitchleave" type="hidden" name="sandwitchleave" value="0" />
-                                    <input class="sandcheckbox"  type="checkbox" name="sandwitch" value="1" >
-                                    </label>
-                              
-                            </div>
-                        </div>  <?php }?>
-                        <br/><br/>
-                        <div class="form-group mt-lg">
-                            <div class="col-sm-offset-4 col-sm-5">
-                                <button type="submit" id="leave-save-button"  name="sbtn" value="1" class="btn btn-primary">Apply
-                                </button>
-                            </div>
-                        </div>
-                        <br>
+                                <br>
                     </div>
-                </form>
+                
             </div>
                         <div class="col-md-4">
                          <div class="panel panel-custom">
@@ -714,47 +834,107 @@
                           $total_quota=0; $total_Approveleave=0;
 						  
 						  /* Start Get Leave From Attendance */
-						  
-						  $staff_id = $this->session->userdata('staff_user_id');
-						  $bio_id = $this->session->userdata('staff_bio_id');
+						    $staff_id = $this->session->userdata('staff_user_id');
+                $bio_id = $this->session->userdata('staff_bio_id');
+
+
+                $this->db->select('DISTINCT(LogDate)');
+                $this->db->group_start();
+                $this->db->where('staffId', $staff_id);
+                $this->db->or_where('UserId',$bio_id);
+                $this->db->group_end();
+                $this->db->where('date(LogDate)  >=', '2021-10-01');
+                $this->db->where('date(LogDate) <=', $end);
+                $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+                $this->db->where('date_format(LogDate,"%H:%i") < "18:30"');
+                $late_data = $this->db->get('deviceLogs_2_2020')->result();
+                //echo $this->db->last_query();
+
+                $this->db->select('DISTINCT(LogDate)');
+                $this->db->group_start();
+                $this->db->where('staffId',  $staff_id);
+                $this->db->or_where('UserId', $bio_id);
+                $this->db->group_end();
+                $this->db->where('date(LogDate)  >=', '2021-10-01');
+                $this->db->where('date(LogDate) <=', $end);
+                $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+                $this->db->where('date_format(LogDate,"%H:%i") < "14:30"');
+                $late_mm = $this->db->get('deviceLogs_2_2020')->result();
+                // echo $this->db->last_query();
+                //count($late_mm);
+                
+                $empId = $this->session->userdata('staff_user_id');
+                $empBio = $this->session->userdata('staff_bio_id');
+
+                $late_data = count($late_data);
+
+                $totalLeaveHD = $this->db->query("SELECT DISTINCT DATE(`deviceLogs_2_2020`.`LogDate`), `tblleaveapplication`.`leave_start_date`, `tblleaveapplication`.`duration` FROM `deviceLogs_2_2020` RIGHT JOIN `tblleaveapplication` ON DATE(`deviceLogs_2_2020`.`LogDate`)=DATE(`tblleaveapplication`.`leave_start_date`) AND `deviceLogs_2_2020`.`staffId`=`tblleaveapplication`.`user_id` WHERE `staffId` = $empId AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND `tblleaveapplication`.`application_status`='2' AND time(LogDate) >= '09:30:00' AND time(LogDate) < '18:30:00' ORDER BY `DeviceLogId` DESC")->result();
+                $totalHDL = count($totalLeaveHD);
+
+                 
+                $today = date("Y-m-d");
+                $totallockOut = $this->db->query("SELECT DATE(`deviceLogs_2_2020`.`LogDate`) as lgdate,count(*) as cnt FROM `deviceLogs_2_2020` WHERE (`staffId` = $empId ) AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND date(LogDate) != '$today' group by DATE(`deviceLogs_2_2020`.`LogDate`) ")->result();
+
+                $counter = 0;
+                 foreach($totallockOut as $clockO){
+                    if($clockO->cnt==1){
+                        $cstCheck =$this->db->query("SELECT * FROM `deviceLogs_2_2020` WHERE `UserId`='$empBio' AND date(LogDate)='$clockO->lgdate' AND( time(LogDate)<='09:45:00' OR time(LogDate)>= '18:30:00') ")->result();
+                        if(count($cstCheck)%2==1){
+                        }else{
+                            $counter++ ;
+                        }
+                    }
+                 }
+
+
+                if($late_data == 0){
+                    $missed_leave =  ($counter+$late_data)/2;
+                }
+                // else if($lateClock> 0){
+                //    $missed_leave =  ($counter+$lateClock)/2;
+                // }
+                else{
+                    $missed_leave =  ($counter+$late_data-$totalHDL)/2;
+                }
+                // echo "<br>".$late_data." early/late<br>";
+                // echo $counter." missed<br>";
+                // echo $totalHDL." halfday Leave<br>";
+                // print_r($missed_leave);
+
 						  
 						  $totalday = $this->db->query('SELECT  count(UserId) as cnt FROM deviceLogs_2_2020 WHERE year(LogDate) = 2020 AND (UserId = "'.$bio_id.'" OR staffId = "'.$staff_id.'") GROUP BY `UserId`, date(LogDate) HAVING cnt = 1');
 						  
-                            $missedLogs = $totalday->result();
+              $missedLogs = $totalday->result();
 							$totalMissedLog = 0;
 							foreach($missedLogs as $missedLog){
 								$totalMissedLog = $totalMissedLog+$missedLog->cnt;
 							}
 							
 						  /* Stop Get Leave From Attendance */
-                      foreach($leaveCategory as $category1) {
-							              $catId=$category1['leave_category_id']; 
-                            $this->db->select_sum('duration');
-                            $this->db->where('leave_category_id',$catId); 
-                            $this->db->where('application_status','2');
-							              $loginid=$this->session->userdata('staff_user_id');	
-                            $this->db->where('user_id',$loginid); 
-                            $this->db->where('date(leave_start_date) >=', $start);
-                            $this->db->where('date(leave_end_date) <=', $end);
-                            $result=$this->db->get('tblleaveapplication')->result(); 
+              foreach($leaveCategory as $category1) {
+							  $catId=$category1['leave_category_id']; 
+                $this->db->select_sum('duration');
+                $this->db->where('leave_category_id',$catId); 
+                $this->db->where('application_status','2');
+							  $loginid=$this->session->userdata('staff_user_id');	
+                $this->db->where('user_id',$loginid); 
+                $this->db->where('date(leave_start_date) >=', $start);
+                $this->db->where('date(leave_end_date) <=', $end);
+                $result=$this->db->get('tblleaveapplication')->result(); 
 							              //echo $this->db->last_query()."<br><br>";
-                            $to = $result[0]->duration;
-                            $this->db->where('staffid',$loginid); 
-                            $copmpl=$this->db->get('tblstaff')->result(); 
-                            $comp_off = $copmpl[0]->comp_off;
+                $to = $result[0]->duration;
+                $this->db->where('staffid',$loginid); 
+                $copmpl=$this->db->get('tblstaff')->result(); 
+                $comp_off = $copmpl[0]->comp_off;
                             
-							
-                             
-                            // print_r($leaveCategory);
-							
-							if($category1['leave_category'] == "CL"){
-								$appliedCL = $to;
-								if($appliedCL > 12){
-									$to = 12;
-								}else{
-									$to = $to;
-								}
-							}
+  							if($category1['leave_category'] == "CL"){
+  								$appliedCL = $to;
+  								if($appliedCL > 12){
+  									$to = 12;
+  								}else{
+  									$to = $to;
+  								}
+  							}
 							//echo $to;
 							if($category1['leave_category'] == "EL" && $appliedCL > 12){
 								$appliedEL = $to+($appliedCL-12);
@@ -767,12 +947,108 @@
 							if($category1['leave_category'] == "LWP" && $appliedEL > 6){
 								$to = $to+($appliedEL-6);
 							}
+
+                $leave_id = $category1['leave_category_id'];
+                $confirmationDate = get_confirmation_date_satffwise($this->session->userdata('staff_user_id'));
+                $confDate = $confirmationDate->confirmation_date;
+                if(($start<$confDate) && ($end>$confDate)){
+                    $start_date = $confDate;
+                    $date=1;
+                }
+
+                if(($start<$confDate) && ($end<$confDate)){
+                   $start_date = $start; //null
+                   $date=0;
+                }
+
+                if(($start>$confDate) && ($end>$confDate)){
+                    $start_date = $start;
+                    $date=1;
+                }
+
+                $leave_start = DateTime::createFromFormat('Y-m-d',$start_date);
+                $leave_end = DateTime::createFromFormat('Y-m-d',$end);
+                $diffMonths = $leave_end->diff($leave_start)->format("%m")+1;
+                $leave_quota = $category1['leave_quota'];
+                //$total = $status['total'];
+                $this->db->select_sum('duration');
+                $this->db->where('user_id',$this->session->userdata('staff_user_id'));
+                $this->db->where('leave_category_id',$leave_id);
+                $this->db->where('application_status',2);
+                $this->db->where('leave_start_date >=', $start_date);
+                $this->db->where('leave_start_date <=', $end);
+                $totalData = $this->db->get('tblleaveapplication')->result();
+                // print_r($totalData);
+
+                $q = 12/$leave_quota;
+                $quota = $diffMonths/$q;
+
+                if($date==1){
+                    $quota =  $quota;
+                    //$total = $total;
+                }else{
+                    $quota = 0;
+                    //$total = 0;
+                }
+
+                if($totalData[0]->duration>0){ 
+                    $total = $totalData[0]->duration;
+                    $color = 'style="color:#FF0000"';
+                }else{ 
+                    $total = 0;
+                    $color = '';
+                }
+
+                  if ($missed_leave > 0) {
+                                                    if ($category1['leave_category'] == 'CL') {
+                                                        $temp = $total + $missed_leave;
+                                                        if ( $temp > $quota) {
+                                                            $missed_leave = ($missed_leave+$total)- $quota;
+                                                            $total = $quota;
+                                                        } else {
+                                                            $total = $total + $missed_leave;
+                                                            $missed_leave = 0;
+                                                        }
+                                                    }
+                                                    
+                                                    if ($category1['leave_category'] == 'EL') {
+                                                        if ( ($total + $missed_leave) > $quota) {
+                                                            $missed_leave =($missed_leave+$total)- $quota;
+                                                            $total = $quota;
+                                                        } else {
+                                                            // echo "ss";
+                                                            $total = $total + $missed_leave;
+                                                            $missed_leave = 0;
+                                                        }
+                                                    }
+                                                    
+                                                    if ($category1['leave_category'] == 'LWP') {
+                                                        
+                                                        $total += $missed_leave;
+                                                        $missed_leave = 0;
+                                                    }
+                  }
+
+
                             
                             ?>
                                <tr>
                                     <td><strong> <?php echo  $category1['leave_category']; ?></strong>:</td>
-                                    <td><? if($category1['leave_category'] == 'LWP') { ?> <? if($to == null){ echo "0"; } else { echo  $to; } ?> <? } else { ?> <? if($to == null){ echo "0"; } else { echo  $to; } ?>/<?= $category1['leave_quota']; ?> <? } ?></td>
-                                            
+                                    <?php 
+                                     if($leave_id==11){
+                                          $quota =  $leave_quota;
+                                          echo "<td><span ".$color.">".$total."</span></td>";
+                                      }else{
+                                          echo "<td><span ".$color.">".$total."/".$quota."</span></td>";
+                                      }
+                                    ?>
+                                        <td>
+
+                                           <input type="hidden" name="leave_id_<?php echo $category1['leave_category']; ?>" value="<?php echo $leave_id; ?>" id="leave_id_<?php echo $category1['leave_category']; ?>">
+
+                                          <input type="hidden" name="leave_quota_use_<?php echo $category1['leave_category']; ?>" value="<?php echo $total; ?>" id="leave_quota_use_<?php echo $category1['leave_category']; ?>">
+                                          <input type="hidden" name="leave_quota_g_<?php echo $category1['leave_category'];?>" value="<?php echo $quota; ?>" id="leave_quota_g_<?php echo $category1['leave_category']; ?>">
+                                        </td>
                                 </tr>
                                
                           <?php
@@ -806,6 +1082,10 @@
                                     <td><strong><?= "Special Leave"; ?></strong>:</td>
                                     <td>
                                         <?php if($applied_special_leave->duration == ""){ echo "0"; }else{ echo $applied_special_leave->duration; } ?>/<?php if($total_special_leave->quota == ""){ echo "0"; } else { echo  $total_special_leave->quota; }; ?></td>
+                                         <td>
+                                          <input type="hidden" name="leave_quota_use_Special" value="<?php echo $applied_special_leave->duration; ?>" id="leave_quota_use_Special">
+                                          <input type="hidden" name="leave_quota_g_Special" value="<?php echo $total_special_leave->quota; ?>" id="leave_quota_g_Special">
+                                        </td>
                                 </tr>
                                
                                 
@@ -820,7 +1100,12 @@
                     </table>
                 </div>
                         </div>
-                    </div>
+
+                   </div>
+                   </form>
+                   <!-- end from -->
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -858,6 +1143,7 @@ $('.radio-inline.c-radio input[type="radio"]').click(function(){
     		$("input[name='multiple_days_start_date']").val("");
     		$("input[name='multiple_days_end_date']").val("");
       }
+
       if($val=='multiple_days')
       {
         $('#single_day').css('display','none'); 
@@ -889,13 +1175,13 @@ $('.radio-inline.c-radio input[type="radio"]').click(function(){
 						  alert('Something is wrong');
 					   }, */
 					   success: function(data) {
-							if(data < totalDays){
-								$(".quota_exceed").val('1');
-								$(".quota_exceed_data").css('display','block');
-							}else{
-								$(".quota_exceed").val('0');
-								$(".quota_exceed_data").css('display', 'none');
-							}
+							// if(data < totalDays){
+							// 	$(".quota_exceed").val('1');
+							// 	$(".quota_exceed_data").css('display','block');
+							// }else{
+							// 	$(".quota_exceed").val('0');
+							// 	$(".quota_exceed_data").css('display', 'none');
+							// }
 							
 							//if(data.leave_category_id)
 					   }
@@ -1055,53 +1341,155 @@ $(document).ready(function(){
 </script>
 
 <script>
-  $(document).ready(function(){
+  function categLeave(argument) {
+        // $('#saveleave').trigger("reset");
+        $('input[name="leave_type"]').prop('checked', false);
+        $('input[name="reason"]').val("");
+        $('input[name="multiple_days_start_date"]').val("");
+        $('input[name="multiple_days_end_date"]').val("");
+        $('input[name="single_day_start_date"]').val("");
+        $('select[name="half_shift"]').val("");
+        $('.leaveApply').prop('disabled', false);
+        $('.leaveMsg').css('display','none');
+  }
+
+  function sandwitch(argument) {
+    alert("hello")
+  }
+
+  $(document).ready(function(){ 
+   
     $(".sandwitchcheck").on('change', function postinput(){
+        var leave = $('select[name="leave_category_id"]').val();
+        var leave_name= $("#leave_category_id option:selected").text();
+        $('#leave_category_nm').val(leave_name);
+        if(leave_name=="Special Leave"){
+          var leave_quota_use = $('#leave_quota_use_Special').val();
+          var leave_quota_g = $('#leave_quota_g_Special').val();
+        }else{
+          var leave_quota_use = $('#leave_quota_use_'+leave_name).val();
+          var leave_quota_g = $('#leave_quota_g_'+leave_name).val();
+        }
+         var remaining_leave = parseFloat(leave_quota_g)-parseFloat(leave_quota_use);
+        // alert(leave_quota_use+" - "+leave_quota_g);
+
         var start_date = $('#start_date').val();
         var end_date = $('#end_date').val();
         var startDate = new Date(start_date);
         var endDate = new Date(end_date);
-        var totalSundays = 0;
+
+        const diffInMs   = new Date(end_date) - new Date(start_date)
+        const diffInDays = (diffInMs / (1000 * 60 * 60 * 24))+1;
        
+
+        var totalSundays = 0;
         for (var i = startDate; i <= endDate; ){
             if (i.getDay() == 0){
                 totalSundays++;
             }
             i.setTime(i.getTime() + 1000*60*60*24);
         }
-        if(totalSundays > 0)
-        {    //alert("hello")
-            $('#sandwitchdiv').css('display','block');
-            $('#sandwitchleave').val('1');
-            alert_float('success', 'You are applying a Sandwitch Leave');
-        }
-        else
-        {
-          $('#sandwitchdiv').css('display','none'); 
-          $.ajax({ 
-            url: 'leave/sandwitchcheck',
-            data: { start_date: start_date,end_date:end_date},
-            type: 'post'
-          }).done(function(responseData) {
-           // alert(responseData);
-           if(responseData > 0)
-           {
-               
-               $('#sandwitchdiv').css('display','block');
-                $('#sandwitchleave').val('1');
-               alert_float('success', 'You are applying a Sandwitch Leave');
-           }
-           else
-           {
-               $('#sandwitchleave').val('0');
-               $('#sandwitchleave').val('0');
-               $('#sandwitchdiv').css('display','none');
-           }
-                                
-        }).fail(function() {
-                               
-        });
-        }
+
+        if(diffInDays>remaining_leave){
+           // $('#leave_quota_g_'+leave_name).val(diffInDays);
+            $('.leaveApply').prop('disabled', true);
+            $('.leaveMsg').css('display','block');
+            $('.leave_N').html(leave_name);
+            
+            if(totalSundays > 0)
+            {   
+              $('#sandwitchdiv').css('display','block');
+              $('#sandwitchleave').val('1');
+              alert_float('success', 'You are applying a Sandwitch Leave');
+            }
+           
+            // $('.quota_exceed_data').css('display','block');
+            // $(".quota_exceed").val('1');
+
+            if(leave_name=="CL"){
+              var leave_quota_use_cl = $('#leave_quota_use_Special').val();
+              var leave_quota_g_cl = $('#leave_quota_g_Special').val();
+              var remaining_leave_cl = parseFloat(leave_quota_g_cl)-parseFloat(leave_quota_use_cl);
+              var remaining_days = parseFloat(diffInDays)-parseFloat(remaining_leave);
+              if(remaining_days>remaining_leave_cl){
+                $('#leave_nm').html("EL");
+              }else{
+                $('#leave_nm').html("SL");
+              }
+            // $('#leave_nm').html("SL");
+            }
+
+            if(leave_name=="EL"){
+              var leave_quota_use_cl = $('#leave_quota_use_CL').val();
+              var leave_quota_g_cl = $('#leave_quota_g_CL').val();
+              var remaining_leave_cl = parseFloat(leave_quota_g_cl)-parseFloat(leave_quota_use_cl);
+              var remaining_days = parseFloat(diffInDays)-parseFloat(remaining_leave);
+              if(remaining_days>remaining_leave_cl){
+                $('#leave_nm').html("SL");
+              }else{
+                $('#leave_nm').html("CL");
+              }
+            }
+
+            if(leave_name=="Special Leave"){
+              var leave_quota_use_cl = $('#leave_quota_use_CL').val();
+              var leave_quota_g_cl = $('#leave_quota_g_CL').val();
+              var remaining_leave_cl = parseFloat(leave_quota_g_cl)-parseFloat(leave_quota_use_cl);
+              var remaining_days = parseFloat(diffInDays)-parseFloat(remaining_leave);
+              if(remaining_days>remaining_leave_cl){
+                $('#leave_nm').html("LWP");
+              }else{
+                $('#leave_nm').html("CL");
+              }      
+            }
+
+
+        }else{
+          if((leave_name=="CL") && (diffInDays>3)){
+            $('.leaveApply').prop('disabled', true);
+            $('.leaveMsg').css('display','block');
+            alert_float('warning', 'Maximum 3 CL Apply');
+            // $('.leave_N').html(leave_name);
+          }else{
+                $('.leaveApply').prop('disabled', false);
+                $('.leaveMsg').css('display','none');
+                $('#sandwitchdiv').css('display','none'); 
+                $.ajax({ 
+                  url: 'leave/sandwitchcheck',
+                  data: { start_date: start_date,end_date:end_date},
+                  type: 'post'
+                }).done(function(responseData) {
+                  if(responseData > 0)
+                  {
+                    $('#sandwitchdiv').prop('disabled', false);
+                    $('#sandwitchleave').val('1');
+                    alert_float('success','You are applying a Sandwitch Leave');
+                  }
+                  else
+                  {
+                    $('#sandwitchleave').val('0');
+                    $('#sandwitchleave').val('0');
+                    $('#sandwitchdiv').css('display','none');
+                  }                                      
+                }).fail(function(){
+                                     
+                });
+          }
+           
+        } 
+
+        // if(totalSundays > 0)
+        // {   
+        //     // $('.leaveApply').prop('disabled', false);
+        //     // $('.leaveMsg').css('display','none');
+        //     $('#sandwitchdiv').css('display','block');
+        //     $('#sandwitchleave').val('1');
+        //     alert_float('success', 'You are applying a Sandwitch Leave');
+        // }
+        // else{
+
+        // }
+       
         
     });
   });     
@@ -1110,13 +1498,50 @@ $(document).ready(function(){
    $(document).ready(function(){
     $(".sandcheckbox").on('click', function postinput(){
      if($(this).prop("checked") == true)
-     {  //alert("hello-1");
+     {  var leave_name= $("#leave_category_id option:selected").text();
+        // $('#leave_category_nm').val(leave_name);
+        if(leave_name=="Special Leave"){
+          var leave_quota_use = $('#leave_quota_use_Special').val();
+          var leave_quota_g = $('#leave_quota_g_Special').val();
+        }else{
+          var leave_quota_use = $('#leave_quota_use_'+leave_name).val();
+          var leave_quota_g = $('#leave_quota_g_'+leave_name).val();
+        }
+        
+        var remaining_leave = parseFloat(leave_quota_g)-parseFloat(leave_quota_use);
+
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+        var startDate = new Date(start_date);
+        var endDate = new Date(end_date);
+
+        const diffInMs   = new Date(end_date) - new Date(start_date)
+        const diffInDays = (diffInMs / (1000 * 60 * 60 * 24))
+
+        var totalSundays = 0;
+        for (var i = startDate; i <= endDate; ){
+            if (i.getDay() == 0){
+                totalSundays++;
+            }
+            i.setTime(i.getTime() + 1000*60*60*24);
+        }
+      
+       
+       if(diffInDays>remaining_leave){
+        $('.leaveApply').prop('disabled', true);
+        $('.leaveMsg').css('display','block');
+       }else{
+        $('.leaveApply').prop('disabled', false);
+        $('.leaveMsg').css('display','none');
+       }
+       
         // $('#sandwitchleave').val('1');
         $('input[name=sandwitch]').attr('checked', false);
      }
      else
      {  //alert("hello-2");
-
+        $('.leaveApply').prop('disabled', true);
+        $('.leaveMsg').css('display','block');
         // $('#sandwitchleave').val('2');
         $('input[name=sandwitch]').attr('checked', true);
      }

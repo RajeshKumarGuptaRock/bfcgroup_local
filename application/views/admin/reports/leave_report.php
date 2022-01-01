@@ -8,9 +8,7 @@
                         <center><h3>Leave Report Summary</h3></center>
 						<!-- <a href="<?php echo site_url('/admin/reports/special_leave'); ?>" class="btn btn-info leave-btn" >Show Special Leave</a> -->
                         <hr class="hr-panel-heading">
-                       <?=form_open('', array(
-    'method' => 'GET'
-)); ?>
+                       <?=form_open('', array('method' => 'GET')); ?>
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="input-group">
@@ -50,6 +48,9 @@
                     
                    <?php if (!empty($staffList))
                     {
+                        // echo "<pre>";
+                        // print_r($staffList);
+                        // die;
                         foreach ($staffList as $staff)
                         { ?>
                             <div class="row leads-overview">
@@ -63,10 +64,12 @@
                                        <tr><td><b>Category</b></td>
                                         <?php
                                         $staffLeadStatus = get_leave_summary_satffwise($staff['staffid'], @$start, @$end);
+
                                         if (!empty($staffLeadStatus))
                                         {
                                             foreach ($staffLeadStatus as $status)
-                                            { ?>
+                                            {
+                                                ?>
                                                <td><b><span style="color:<?php echo $status['color']; ?>" class="<?php echo isset($status['junk']) || isset($status['lost']) ? 'text-danger' : ''; ?>"><?php echo $status['leave_category']; ?></span></b> </td>
                                         <?php
                                             }
@@ -76,11 +79,105 @@
                                    <tr>
                                        <td><b>Quota</b></td>
                                        <?php
-                                        $staffLeadStatus = get_leave_summary_satffwise($staff['staffid'], @$start, @$end);
-                                        if (!empty($staffLeadStatus))
-                                        {
-                                            foreach ($staffLeadStatus as $status)
-                                            {  
+ //    $currentData = date('Y-m-d');
+ //    $datetime1 = date_create( '2021-10-01');
+ //    $datetime2 = date_create($currentData);
+ //    $interval = date_diff($datetime1, $datetime2);
+ //    $totalDays = $interval->format('%a');
+ //    $sundays = array();
+	// while ($datetime1 <= $datetime2) {
+	//     if ($datetime1->format('w') == 0) {
+	//         $sundays[] = $datetime1->format('Y-m-d');
+	//     }
+    
+	//     $datetime1->modify('+1 day');
+	// }
+
+	// $totalSunday = count($sundays);
+	// $this->db->select_sum('days');
+ //    $this->db->where('quota  >=', '2021-10-01');
+ //    $this->db->where('leave_end_date <=', $currentData);
+ //     $late_data = $this->db->get('tblholidays')->result();
+ //    $holidays = $late_data[0]->days;
+
+ //    $empId = $staff['staffid'];
+ //    $presentDay = $this->db->query("SELECT DISTINCT(LogDate) FROM `deviceLogs_2_2020` WHERE ( `staffId` = $empId OR `UserId` = '06 02 08' ) AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2021-12-29' group by DATE(`deviceLogs_2_2020`.`LogDate`)")->result();
+ //    $totalPresent = count($presentDay);
+
+
+ //    $totalabsent= $totalDays - ($totalSunday+$holidays+$totalPresent);
+
+    $this->db->select('DISTINCT(LogDate)');
+    $this->db->group_start();
+    $this->db->where('staffId', $staff['staffid']);
+    $this->db->or_where('UserId',$staff['bio_id']);
+    $this->db->group_end();
+    $this->db->where('date(LogDate)  >=', '2021-10-01');
+    $this->db->where('date(LogDate) <=', $end);
+    $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+    $this->db->where('date_format(LogDate,"%H:%i") < "18:30"');
+    $late_data = $this->db->get('deviceLogs_2_2020')->result();
+
+
+    $this->db->select('DISTINCT(LogDate)');
+    $this->db->group_start();
+    $this->db->where('staffId', $staff['staffid']);
+    $this->db->or_where('UserId',$staff['bio_id']);
+    $this->db->group_end();
+    $this->db->where('date(LogDate)  >=', '2021-10-01');
+    $this->db->where('date(LogDate) <=', $end);
+    $this->db->where('date_format(LogDate,"%H:%i") > "09:45"');
+    $this->db->where('date_format(LogDate,"%H:%i") < "14:30"');
+    $late_mm = $this->db->get('deviceLogs_2_2020')->result();
+    // echo $this->db->last_query();
+    count($late_mm);
+    
+    $empId = $staff['staffid'];
+    $empBio = $staff['bio_id'];
+
+    $late_data = count($late_data);
+
+    $totalLeaveHD = $this->db->query("SELECT DISTINCT DATE(`deviceLogs_2_2020`.`LogDate`), `tblleaveapplication`.`leave_start_date`, `tblleaveapplication`.`duration` FROM `deviceLogs_2_2020` RIGHT JOIN `tblleaveapplication` ON DATE(`deviceLogs_2_2020`.`LogDate`)=DATE(`tblleaveapplication`.`leave_start_date`) AND `deviceLogs_2_2020`.`staffId`=`tblleaveapplication`.`user_id` WHERE `staffId` = $empId AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND `tblleaveapplication`.`application_status`='2' AND time(LogDate) >= '09:30:00' AND time(LogDate) < '18:30:00' ORDER BY `DeviceLogId` DESC")->result();
+    $totalHDL = count($totalLeaveHD);
+
+     
+    $today = date("Y-m-d");
+    $totallockOut = $this->db->query("SELECT DATE(`deviceLogs_2_2020`.`LogDate`) as lgdate,count(*) as cnt FROM `deviceLogs_2_2020` WHERE (`staffId` = $empId ) AND date(LogDate) >= '2021-10-01' AND date(LogDate) <= '2022-03-31' AND date(LogDate) != '$today' group by DATE(`deviceLogs_2_2020`.`LogDate`) ")->result();
+
+    $counter = 0;
+     foreach($totallockOut as $clockO){
+        if($clockO->cnt==1){
+            $cstCheck =$this->db->query("SELECT * FROM `deviceLogs_2_2020` WHERE `UserId`='$empBio' AND date(LogDate)='$clockO->lgdate' AND( time(LogDate)<='09:45:00' OR time(LogDate)>= '18:30:00') ")->result();
+            if(count($cstCheck)%2==1){
+            }else{
+                $counter++ ;
+            }
+        }
+     }
+
+
+    if($late_data == 0){
+        $missed_leave =  ($counter+$late_data)/2;
+    }
+    // else if($lateClock> 0){
+    // 	  $missed_leave =  ($counter+$lateClock)/2;
+    // }
+    else{
+        $missed_leave =  ($counter+$late_data-$totalHDL)/2;
+    }
+
+    /* echo "<br>".$late_data." early/late<br>";
+    echo $counter." missed<br>";
+    echo $totalHDL." halfday Leave<br>";
+    print_r($missed_leave); */
+
+    $leave_spl_categ= 0;
+    $staffLeadStatus = get_leave_summary_satffwise($staff['staffid'], @$start, @$end);
+    // echo "<pre>"; print_r($staffLeadStatus);
+    if (!empty($staffLeadStatus))
+    {
+            foreach ($staffLeadStatus as $status)
+            {  
                 $leave_id = $status['leave_category_id'];
                 $confirmationDate = get_confirmation_date_satffwise($staff['staffid']);
                 $confDate = $confirmationDate->confirmation_date;
@@ -111,7 +208,8 @@
                 $this->db->where('leave_start_date >=', $start_date);
                 $this->db->where('leave_start_date <=', $end);
                 $totalData = $this->db->get('tblleaveapplication')->result();
-              
+                // print_r($totalData);
+
                 $q = 12/$leave_quota;
                 $quota = $diffMonths/$q;
 
@@ -129,22 +227,47 @@
                 }else{ 
                     $total = 0;
                     $color = '';
-                } 
-
+                }
+                                              
+                                                if ($missed_leave > 0) {
+                                                    if ($status['leave_category'] == 'CL') {
+                                                        $temp = $total + $missed_leave;
+                                                        if ( $temp > $quota) {
+                                                            $missed_leave = ($missed_leave+$total)- $quota;
+                                                            $total = $quota;
+                                                        } else {
+                                                            $total = $total + $missed_leave;
+                                                            $missed_leave = 0;
+                                                        }
+                                                    }
+                                                    
+                                                    if ($status['leave_category'] == 'EL') {
+                                                        if ( ($total + $missed_leave) > $quota) {
+                                                            $missed_leave =($missed_leave+$total)- $quota;
+                                                            $total = $quota;
+                                                        } else {
+                                                            // echo "ss";
+                                                            $total = $total + $missed_leave;
+                                                            $missed_leave = 0;
+                                                        }
+                                                    }
+                                                    
+                                                    if ($status['leave_category'] == 'LWP') {
+                                                        
+                                                        $total += $missed_leave;
+                                                        $missed_leave = 0;
+                                                    }
+                                                }
+                                                
                 if($leave_id==11){
                     $quota =  $leave_quota;
                     echo "<td><span ".$color.">".$total."</span></td>";
                 }else{
                     echo "<td><span ".$color.">".$total."/".$quota."</span></td>";
                 }
-
-                
-
-                //echo $quota;
-                ?>
-                                            <!-- <td>0/<?= $quota; ?></td> -->
-                                        <?php
-                                            }
+            ?>
+        <?php
+         }
             $getAppliedSpecialLeave = getAppliedSpecialLeave($staff['staffid']);
             $appliedLeave = 0;
             if ($getAppliedSpecialLeave->duration != "")
@@ -159,7 +282,7 @@
                 $totalSpecialLeaveData = $getTotalSpecialLeave->quota;
             }
             echo "<td>";
-            echo $appliedLeave . " / " . $totalSpecialLeaveData;
+            echo $appliedLeave . "/ " . $totalSpecialLeaveData;
             echo "</td>";
                                         } ?>
                                    </tr>

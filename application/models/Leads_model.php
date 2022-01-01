@@ -5328,10 +5328,10 @@ function business_report1($start,$length)
                         $findslash = strpos($get_date[0],"/");
                         if($findslash >=1){
                             $seprate_date=explode("/",$get_date[0]);
-                            $insert_csv['9'] = $seprate_date[0].'/'.$seprate_date[1].'/'.$seprate_date[2];
+                            $insert_csv['9'] = $seprate_date[0].'-'.$seprate_date[1].'-'.$seprate_date[2];
                         }else{
                             $seprate_date=explode("-",$get_date[0]);
-                            $insert_csv['9'] = $seprate_date[0].'/'.$seprate_date[1].'/'.$seprate_date[2];
+                            $insert_csv['9'] = $seprate_date[0].'-'.$seprate_date[1].'-'.$seprate_date[2];
                         } 
                         
                     }else{
@@ -5442,7 +5442,7 @@ function business_report1($start,$length)
                         'description' => $insert_csv['8'],  
 
                         'lead_callingdate' => $insert_csv['9'],
-                        'lead_calling_date' => date("Y-m-d"),
+                        'lead_calling_date' => date("Y-m-d",strtotime(trim($insert_csv['9']))),
                         'lead_category_id' => $insert_csv['10'], 
                             
                         'ImEx_NextcallingDate' => $insert_csv['11'],    

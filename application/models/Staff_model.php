@@ -404,8 +404,8 @@ class Staff_model extends CRM_Model
 
             return $staff;
         }
-        //$this->db->order_by('firstname', 'desc');
-        $this->db->order_by('staffid', 'desc');
+        $this->db->order_by('firstname', 'asc');
+        //$this->db->order_by('staffid', 'desc');
 
         return $this->db->get('tblstaff')->result_array();
        

@@ -4379,7 +4379,7 @@ $result1  = $this->db->get('tblleads_create_package')->result();
         $config = array();
         $config['base_url'] =  base_url() .'admin/leads_order/exportleads';
         $config['total_rows'] =$allcount;
-        $config['per_page'] = 10;
+        $config['per_page'] = 50;
         $config['full_tag_open'] = "<ul class='pagination'>";
         $config['full_tag_close'] = '</ul>';
         $config['num_tag_open'] = '<li>';
@@ -4405,7 +4405,7 @@ $result1  = $this->db->get('tblleads_create_package')->result();
         $data['bodyclass'] = 'hide-sidebar';
         $data['search'] = $search_text;
         $data['search_cat'] = $expsearch_cat;
-
+// echo $this->db->last_query();
         $data['search_category'] = implode("-",$expsearch_cat);
         $data['start_date'] = $expstart_date;
         $data['end_date'] = $expend_date;

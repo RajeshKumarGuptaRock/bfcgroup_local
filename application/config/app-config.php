@@ -17,10 +17,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 *
 */
 if ($_SERVER['HTTP_HOST']=='localhost'){
-   $base_url = 'http://localhost/bfcgroup/';
-   //https://localhost/bfcgroup/
+   $base_url = 'http://localhost/BFCGroup/';
 }else{
-   $base_url = 'http://bfcgroup.in/';
+   $base_url = 'https://bfcgroup.in/';
 }
 define('APP_BASE_URL', $base_url);
 
